@@ -10,18 +10,7 @@ use Schools\Core\Concerns\SdkParams;
 use Schools\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new SchoolSearchParams); // set properties as needed
- * $client->schools->search(...$params->toArray());
- * ```
  * Full-text search schools by name.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->schools->search(...$params->toArray());`
  *
  * @see Schools\Schools->search
  *
