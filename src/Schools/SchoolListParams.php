@@ -10,18 +10,7 @@ use Schools\Core\Concerns\SdkParams;
 use Schools\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new SchoolListParams); // set properties as needed
- * $client->schools->list(...$params->toArray());
- * ```
  * Get all schools with filtering.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->schools->list(...$params->toArray());`
  *
  * @see Schools\Schools->list
  *
