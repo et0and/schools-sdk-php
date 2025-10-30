@@ -11,13 +11,13 @@ use Schools\Core\Contracts\BaseModel;
 use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type sync_get_status_response = array{
+ * @phpstan-type SyncGetStatusResponseShape = array{
  *   isStale?: bool, lastSync?: \DateTimeInterface|null, recordCount?: int
  * }
  */
 final class SyncGetStatusResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<sync_get_status_response> */
+    /** @use SdkModel<SyncGetStatusResponseShape> */
     use SdkModel;
 
     use SdkResponse;

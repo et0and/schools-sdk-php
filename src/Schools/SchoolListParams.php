@@ -14,7 +14,7 @@ use Schools\Core\Contracts\BaseModel;
  *
  * @see Schools\Schools->list
  *
- * @phpstan-type school_list_params = array{
+ * @phpstan-type SchoolListParamsShape = array{
  *   authority?: string,
  *   city?: string,
  *   limit?: int,
@@ -27,7 +27,7 @@ use Schools\Core\Contracts\BaseModel;
  */
 final class SchoolListParams implements BaseModel
 {
-    /** @use SdkModel<school_list_params> */
+    /** @use SdkModel<SchoolListParamsShape> */
     use SdkModel;
     use SdkParams;
 

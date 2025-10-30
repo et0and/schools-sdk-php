@@ -11,13 +11,13 @@ use Schools\Core\Contracts\BaseModel;
 use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type root_get_response = array{
+ * @phpstan-type RootGetResponseShape = array{
  *   docs?: string, endpoints?: mixed, message?: string, version?: string
  * }
  */
 final class RootGetResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<root_get_response> */
+    /** @use SdkModel<RootGetResponseShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -14,11 +14,11 @@ use Schools\Core\Contracts\BaseModel;
  *
  * @see Schools\Schools->bySuburb
  *
- * @phpstan-type school_by_suburb_params = array{limit?: int, page?: int}
+ * @phpstan-type SchoolBySuburbParamsShape = array{limit?: int, page?: int}
  */
 final class SchoolBySuburbParams implements BaseModel
 {
-    /** @use SdkModel<school_by_suburb_params> */
+    /** @use SdkModel<SchoolBySuburbParamsShape> */
     use SdkModel;
     use SdkParams;
 

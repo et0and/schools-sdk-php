@@ -12,13 +12,13 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
 use Schools\Schools\SchoolListResponse\Pagination;
 
 /**
- * @phpstan-type school_list_response = array{
+ * @phpstan-type SchoolListResponseShape = array{
  *   data?: list<mixed>, pagination?: Pagination
  * }
  */
 final class SchoolListResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<school_list_response> */
+    /** @use SdkModel<SchoolListResponseShape> */
     use SdkModel;
 
     use SdkResponse;

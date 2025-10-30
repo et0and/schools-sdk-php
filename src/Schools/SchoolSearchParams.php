@@ -14,11 +14,13 @@ use Schools\Core\Contracts\BaseModel;
  *
  * @see Schools\Schools->search
  *
- * @phpstan-type school_search_params = array{q: string, limit?: int, page?: int}
+ * @phpstan-type SchoolSearchParamsShape = array{
+ *   q: string, limit?: int, page?: int
+ * }
  */
 final class SchoolSearchParams implements BaseModel
 {
-    /** @use SdkModel<school_search_params> */
+    /** @use SdkModel<SchoolSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 
