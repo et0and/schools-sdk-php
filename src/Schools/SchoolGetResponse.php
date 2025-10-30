@@ -11,11 +11,11 @@ use Schools\Core\Contracts\BaseModel;
 use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type school_get_response = array{data?: mixed}
+ * @phpstan-type SchoolGetResponseShape = array{data?: mixed}
  */
 final class SchoolGetResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<school_get_response> */
+    /** @use SdkModel<SchoolGetResponseShape> */
     use SdkModel;
 
     use SdkResponse;

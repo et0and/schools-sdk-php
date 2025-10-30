@@ -11,13 +11,13 @@ use Schools\Core\Contracts\BaseModel;
 use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type health_check_response = array{
+ * @phpstan-type HealthCheckResponseShape = array{
  *   status?: string, timestamp?: \DateTimeInterface
  * }
  */
 final class HealthCheckResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<health_check_response> */
+    /** @use SdkModel<HealthCheckResponseShape> */
     use SdkModel;
 
     use SdkResponse;

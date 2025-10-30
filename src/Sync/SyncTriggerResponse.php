@@ -11,7 +11,7 @@ use Schools\Core\Contracts\BaseModel;
 use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type sync_trigger_response = array{
+ * @phpstan-type SyncTriggerResponseShape = array{
  *   error?: string,
  *   lastSync?: \DateTimeInterface,
  *   recordCount?: int,
@@ -20,7 +20,7 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
  */
 final class SyncTriggerResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<sync_trigger_response> */
+    /** @use SdkModel<SyncTriggerResponseShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -14,11 +14,11 @@ use Schools\Core\Contracts\BaseModel;
  *
  * @see Schools\Schools->byStatus
  *
- * @phpstan-type school_by_status_params = array{limit?: int, page?: int}
+ * @phpstan-type SchoolByStatusParamsShape = array{limit?: int, page?: int}
  */
 final class SchoolByStatusParams implements BaseModel
 {
-    /** @use SdkModel<school_by_status_params> */
+    /** @use SdkModel<SchoolByStatusParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,13 +9,13 @@ use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type pagination_alias = array{
+ * @phpstan-type PaginationShape = array{
  *   limit?: int, page?: int, total?: int, totalPages?: int
  * }
  */
 final class Pagination implements BaseModel
 {
-    /** @use SdkModel<pagination_alias> */
+    /** @use SdkModel<PaginationShape> */
     use SdkModel;
 
     #[Api(optional: true)]
