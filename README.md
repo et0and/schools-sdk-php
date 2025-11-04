@@ -5,7 +5,7 @@
 >
 > This library has not yet been exhaustively tested in production environments and may be missing some features you'd expect in a stable release. As we continue development, there may be breaking changes that require updates to your code.
 >
-> **We'd love your feedback!** Please share any suggestions, bug reports, feature requests, or general thoughts by [filing an issue](https://www.github.com/stainless-sdks/schools-php/issues/new).
+> **We'd love your feedback!** Please share any suggestions, bug reports, feature requests, or general thoughts by [filing an issue](https://www.github.com/et0and/schools-sdk-php/issues/new).
 
 The Schools PHP library provides convenient access to the Schools REST API from any PHP 8.1.0+ application.
 
@@ -19,12 +19,14 @@ The REST API documentation can be found on [schools.tom.so](https://schools.tom.
 
 To use this package, install via Composer by adding the following to your application's `composer.json`:
 
+<!-- x-release-please-start-version -->
+
 ```json
 {
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@github.com:stainless-sdks/schools-php.git"
+      "url": "git@github.com:et0and/schools-sdk-php.git"
     }
   ],
   "require": {
@@ -32,6 +34,8 @@ To use this package, install via Composer by adding the following to your applic
   }
 }
 ```
+
+<!-- x-release-please-end -->
 
 ## Usage
 
@@ -179,4 +183,4 @@ PHP 8.1.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/stainless-sdks/schools-php/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/et0and/schools-sdk-php/tree/main/CONTRIBUTING.md).
