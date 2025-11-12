@@ -18,8 +18,6 @@ use Schools\Schools\SchoolSearchParams;
 use Schools\Schools\SchoolSearchResponse;
 use Schools\ServiceContracts\SchoolsContract;
 
-use const Schools\Core\OMIT as omit;
-
 final class SchoolsService implements SchoolsContract
 {
     /**
@@ -52,56 +50,26 @@ final class SchoolsService implements SchoolsContract
      *
      * Get all schools with filtering
      *
-     * @param string $authority Filter by education authority
-     * @param string $city Filter by city (partial match)
-     * @param int $limit Results per page (default: 20, max: 100)
-     * @param string $name Filter by school name (partial match)
-     * @param string $orgType Filter by organization type
-     * @param int $page Page number (default: 1)
-     * @param string $status Filter by school status
-     * @param string $suburb Filter by suburb (partial match)
+     * @param array{
+     *   authority?: string,
+     *   city?: string,
+     *   limit?: int,
+     *   name?: string,
+     *   org_type?: string,
+     *   page?: int,
+     *   status?: string,
+     *   suburb?: string,
+     * }|SchoolListParams $params
      *
      * @throws APIException
      */
     public function list(
-        $authority = omit,
-        $city = omit,
-        $limit = omit,
-        $name = omit,
-        $orgType = omit,
-        $page = omit,
-        $status = omit,
-        $suburb = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SchoolListResponse {
-        $params = [
-            'authority' => $authority,
-            'city' => $city,
-            'limit' => $limit,
-            'name' => $name,
-            'orgType' => $orgType,
-            'page' => $page,
-            'status' => $status,
-            'suburb' => $suburb,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|SchoolListParams $params,
         ?RequestOptions $requestOptions = null
     ): SchoolListResponse {
         [$parsed, $options] = SchoolListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -119,37 +87,18 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by authority
      *
-     * @param int $limit
-     * @param int $page
+     * @param array{limit?: int, page?: int}|SchoolByAuthorityParams $params
      *
      * @throws APIException
      */
     public function byAuthority(
         string $authority,
-        $limit = omit,
-        $page = omit,
+        array|SchoolByAuthorityParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-
-        return $this->byAuthorityRaw($authority, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function byAuthorityRaw(
-        string $authority,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = SchoolByAuthorityParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -167,37 +116,18 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by city
      *
-     * @param int $limit
-     * @param int $page
+     * @param array{limit?: int, page?: int}|SchoolByCityParams $params
      *
      * @throws APIException
      */
     public function byCity(
         string $city,
-        $limit = omit,
-        $page = omit,
+        array|SchoolByCityParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-
-        return $this->byCityRaw($city, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function byCityRaw(
-        string $city,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = SchoolByCityParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -215,37 +145,18 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by status
      *
-     * @param int $limit
-     * @param int $page
+     * @param array{limit?: int, page?: int}|SchoolByStatusParams $params
      *
      * @throws APIException
      */
     public function byStatus(
         string $status,
-        $limit = omit,
-        $page = omit,
+        array|SchoolByStatusParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-
-        return $this->byStatusRaw($status, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function byStatusRaw(
-        string $status,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = SchoolByStatusParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -263,37 +174,18 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by suburb
      *
-     * @param int $limit
-     * @param int $page
+     * @param array{limit?: int, page?: int}|SchoolBySuburbParams $params
      *
      * @throws APIException
      */
     public function bySuburb(
         string $suburb,
-        $limit = omit,
-        $page = omit,
+        array|SchoolBySuburbParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-
-        return $this->bySuburbRaw($suburb, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function bySuburbRaw(
-        string $suburb,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = SchoolBySuburbParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -311,37 +203,17 @@ final class SchoolsService implements SchoolsContract
      *
      * Full-text search schools by name
      *
-     * @param string $q Search query
-     * @param int $limit Results per page (default: 20, max: 100)
-     * @param int $page Page number (default: 1)
+     * @param array{q: string, limit?: int, page?: int}|SchoolSearchParams $params
      *
      * @throws APIException
      */
     public function search(
-        $q,
-        $limit = omit,
-        $page = omit,
-        ?RequestOptions $requestOptions = null
-    ): SchoolSearchResponse {
-        $params = ['q' => $q, 'limit' => $limit, 'page' => $page];
-
-        return $this->searchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function searchRaw(
-        array $params,
+        array|SchoolSearchParams $params,
         ?RequestOptions $requestOptions = null
     ): SchoolSearchResponse {
         [$parsed, $options] = SchoolSearchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

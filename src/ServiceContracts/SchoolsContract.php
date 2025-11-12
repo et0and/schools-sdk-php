@@ -6,11 +6,15 @@ namespace Schools\ServiceContracts;
 
 use Schools\Core\Exceptions\APIException;
 use Schools\RequestOptions;
+use Schools\Schools\SchoolByAuthorityParams;
+use Schools\Schools\SchoolByCityParams;
+use Schools\Schools\SchoolByStatusParams;
+use Schools\Schools\SchoolBySuburbParams;
 use Schools\Schools\SchoolGetResponse;
+use Schools\Schools\SchoolListParams;
 use Schools\Schools\SchoolListResponse;
+use Schools\Schools\SchoolSearchParams;
 use Schools\Schools\SchoolSearchResponse;
-
-use const Schools\Core\OMIT as omit;
 
 interface SchoolsContract
 {
@@ -27,178 +31,76 @@ interface SchoolsContract
     /**
      * @api
      *
-     * @param string $authority Filter by education authority
-     * @param string $city Filter by city (partial match)
-     * @param int $limit Results per page (default: 20, max: 100)
-     * @param string $name Filter by school name (partial match)
-     * @param string $orgType Filter by organization type
-     * @param int $page Page number (default: 1)
-     * @param string $status Filter by school status
-     * @param string $suburb Filter by suburb (partial match)
+     * @param array<mixed>|SchoolListParams $params
      *
      * @throws APIException
      */
     public function list(
-        $authority = omit,
-        $city = omit,
-        $limit = omit,
-        $name = omit,
-        $orgType = omit,
-        $page = omit,
-        $status = omit,
-        $suburb = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SchoolListResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|SchoolListParams $params,
         ?RequestOptions $requestOptions = null
     ): SchoolListResponse;
 
     /**
      * @api
      *
-     * @param int $limit
-     * @param int $page
+     * @param array<mixed>|SchoolByAuthorityParams $params
      *
      * @throws APIException
      */
     public function byAuthority(
         string $authority,
-        $limit = omit,
-        $page = omit,
+        array|SchoolByAuthorityParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function byAuthorityRaw(
-        string $authority,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param int $limit
-     * @param int $page
+     * @param array<mixed>|SchoolByCityParams $params
      *
      * @throws APIException
      */
     public function byCity(
         string $city,
-        $limit = omit,
-        $page = omit,
+        array|SchoolByCityParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function byCityRaw(
-        string $city,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param int $limit
-     * @param int $page
+     * @param array<mixed>|SchoolByStatusParams $params
      *
      * @throws APIException
      */
     public function byStatus(
         string $status,
-        $limit = omit,
-        $page = omit,
+        array|SchoolByStatusParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function byStatusRaw(
-        string $status,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param int $limit
-     * @param int $page
+     * @param array<mixed>|SchoolBySuburbParams $params
      *
      * @throws APIException
      */
     public function bySuburb(
         string $suburb,
-        $limit = omit,
-        $page = omit,
+        array|SchoolBySuburbParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function bySuburbRaw(
-        string $suburb,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $q Search query
-     * @param int $limit Results per page (default: 20, max: 100)
-     * @param int $page Page number (default: 1)
+     * @param array<mixed>|SchoolSearchParams $params
      *
      * @throws APIException
      */
     public function search(
-        $q,
-        $limit = omit,
-        $page = omit,
-        ?RequestOptions $requestOptions = null
-    ): SchoolSearchResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function searchRaw(
-        array $params,
+        array|SchoolSearchParams $params,
         ?RequestOptions $requestOptions = null
     ): SchoolSearchResponse;
 }
