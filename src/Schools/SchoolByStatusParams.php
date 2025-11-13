@@ -12,7 +12,7 @@ use Schools\Core\Contracts\BaseModel;
 /**
  * Get schools by status.
  *
- * @see Schools\Schools->byStatus
+ * @see Schools\Services\SchoolsService::byStatus()
  *
  * @phpstan-type SchoolByStatusParamsShape = array{limit?: int, page?: int}
  */

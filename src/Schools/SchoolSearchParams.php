@@ -12,7 +12,7 @@ use Schools\Core\Contracts\BaseModel;
 /**
  * Full-text search schools by name.
  *
- * @see Schools\Schools->search
+ * @see Schools\Services\SchoolsService::search()
  *
  * @phpstan-type SchoolSearchParamsShape = array{
  *   q: string, limit?: int, page?: int

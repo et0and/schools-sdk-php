@@ -12,7 +12,7 @@ use Schools\Core\Contracts\BaseModel;
 /**
  * Get all schools with filtering.
  *
- * @see Schools\Schools->list
+ * @see Schools\Services\SchoolsService::list()
  *
  * @phpstan-type SchoolListParamsShape = array{
  *   authority?: string,
