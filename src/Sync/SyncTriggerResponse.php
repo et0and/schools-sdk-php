@@ -12,10 +12,10 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SyncTriggerResponseShape = array{
- *   error?: string,
- *   lastSync?: \DateTimeInterface,
- *   recordCount?: int,
- *   success?: bool,
+ *   error?: string|null,
+ *   lastSync?: \DateTimeInterface|null,
+ *   recordCount?: int|null,
+ *   success?: bool|null,
  * }
  */
 final class SyncTriggerResponse implements BaseModel, ResponseConverter

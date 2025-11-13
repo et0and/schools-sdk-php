@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.0 (2025-11-13)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/et0and/schools-sdk-php/compare/v0.1.1...v0.2.0)
+
+### ⚠ BREAKING CHANGES
+
+* **client:** redesign methods
+
+### Features
+
+* **client:** redesign methods ([57f4263](https://github.com/et0and/schools-sdk-php/commit/57f42631744d055ad3d454c58575f1882c2da6f7))
+
+
+### Bug Fixes
+
+* rename invalid types ([52f448f](https://github.com/et0and/schools-sdk-php/commit/52f448ff32ef4a5b89ea01e815af323473a851be))
+
+
+### Chores
+
+* **internal:** codegen related update ([dc4c9a7](https://github.com/et0and/schools-sdk-php/commit/dc4c9a7087b6ffa0690ac4eaa8b940ec2ab48ea5))
+
 ## 0.1.1 (2025-11-05)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/et0and/schools-sdk-php/compare/v0.1.0...v0.1.1)

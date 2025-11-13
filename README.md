@@ -120,9 +120,7 @@ use Schools\RequestOptions;
 $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
-$result = $client->health->check(
-  requestOptions: RequestOptions::with(maxRetries: 5)
-);
+$result = $client->health->check(RequestOptions::with(maxRetries: 5));
 ```
 
 ## Advanced concepts
@@ -141,14 +139,12 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use Schools\RequestOptions;
 
 $response = $client->health->check(
-  requestOptions: RequestOptions::with(
+  RequestOptions::with(
     extraQueryParams: ["my_query_parameter" => "value"],
     extraBodyParams: ["my_body_parameter" => "value"],
     extraHeaders: ["my-header" => "value"],
   ),
 );
-
-var_dump($response["my_undocumented_property"]);
 ```
 
 #### Undocumented request params

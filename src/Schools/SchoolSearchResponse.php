@@ -13,7 +13,7 @@ use Schools\Schools\SchoolSearchResponse\Pagination;
 
 /**
  * @phpstan-type SchoolSearchResponseShape = array{
- *   data?: list<mixed>, pagination?: Pagination
+ *   data?: list<mixed>|null, pagination?: Pagination|null
  * }
  */
 final class SchoolSearchResponse implements BaseModel, ResponseConverter

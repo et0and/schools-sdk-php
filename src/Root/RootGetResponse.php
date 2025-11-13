@@ -12,7 +12,10 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type RootGetResponseShape = array{
- *   docs?: string, endpoints?: mixed, message?: string, version?: string
+ *   docs?: string|null,
+ *   endpoints?: mixed,
+ *   message?: string|null,
+ *   version?: string|null,
  * }
  */
 final class RootGetResponse implements BaseModel, ResponseConverter

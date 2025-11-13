@@ -12,7 +12,7 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type HealthCheckResponseShape = array{
- *   status?: string, timestamp?: \DateTimeInterface
+ *   status?: string|null, timestamp?: \DateTimeInterface|null
  * }
  */
 final class HealthCheckResponse implements BaseModel, ResponseConverter

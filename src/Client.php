@@ -54,9 +54,9 @@ class Client extends BaseClient
             headers: [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'User-Agent' => sprintf('schools/PHP %s', '0.1.1'),
+                'User-Agent' => sprintf('schools/PHP %s', '0.2.0'),
                 'X-Stainless-Lang' => 'php',
-                'X-Stainless-Package-Version' => '0.1.1',
+                'X-Stainless-Package-Version' => '0.2.0',
                 'X-Stainless-OS' => $this->getNormalizedOS(),
                 'X-Stainless-Arch' => $this->getNormalizedArchitecture(),
                 'X-Stainless-Runtime' => 'php',
@@ -73,7 +73,7 @@ class Client extends BaseClient
         $this->sync = new SyncService($this);
     }
 
-    /** @return array<string, string> */
+    /** @return array<string,string> */
     protected function authHeaders(): array
     {
         return $this->apiKey ? ['Authorization' => "Bearer {$this->apiKey}"] : [];
