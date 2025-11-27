@@ -6,6 +6,8 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Schools\Client;
+use Schools\Sync\SyncGetStatusResponse;
+use Schools\Sync\SyncTriggerResponse;
 use Tests\UnsupportedMockTests;
 
 /**
@@ -35,7 +37,8 @@ final class SyncTest extends TestCase
 
         $result = $this->client->sync->getStatus();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SyncGetStatusResponse::class, $result);
     }
 
     #[Test]
@@ -47,6 +50,7 @@ final class SyncTest extends TestCase
 
         $result = $this->client->sync->trigger();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SyncTriggerResponse::class, $result);
     }
 }

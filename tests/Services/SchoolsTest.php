@@ -6,6 +6,9 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Schools\Client;
+use Schools\Schools\SchoolGetResponse;
+use Schools\Schools\SchoolListResponse;
+use Schools\Schools\SchoolSearchResponse;
 use Tests\UnsupportedMockTests;
 
 /**
@@ -35,7 +38,8 @@ final class SchoolsTest extends TestCase
 
         $result = $this->client->schools->retrieve('schoolId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SchoolGetResponse::class, $result);
     }
 
     #[Test]
@@ -47,7 +51,8 @@ final class SchoolsTest extends TestCase
 
         $result = $this->client->schools->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SchoolListResponse::class, $result);
     }
 
     #[Test]
@@ -59,7 +64,8 @@ final class SchoolsTest extends TestCase
 
         $result = $this->client->schools->byAuthority('authority', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -71,7 +77,8 @@ final class SchoolsTest extends TestCase
 
         $result = $this->client->schools->byCity('city', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -83,7 +90,8 @@ final class SchoolsTest extends TestCase
 
         $result = $this->client->schools->byStatus('status', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -95,7 +103,8 @@ final class SchoolsTest extends TestCase
 
         $result = $this->client->schools->bySuburb('suburb', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -107,7 +116,8 @@ final class SchoolsTest extends TestCase
 
         $result = $this->client->schools->search(['q' => 'x']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SchoolSearchResponse::class, $result);
     }
 
     #[Test]
@@ -117,8 +127,11 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->search(['q' => 'x']);
+        $result = $this->client->schools->search([
+            'q' => 'x', 'limit' => 1, 'page' => 1,
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SchoolSearchResponse::class, $result);
     }
 }
