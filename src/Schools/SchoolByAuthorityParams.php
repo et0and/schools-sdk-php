@@ -12,7 +12,7 @@ use Schools\Core\Contracts\BaseModel;
 /**
  * Get schools by authority.
  *
- * @see Schools\Schools->byAuthority
+ * @see Schools\Services\SchoolsService::byAuthority()
  *
  * @phpstan-type SchoolByAuthorityParamsShape = array{limit?: int, page?: int}
  */

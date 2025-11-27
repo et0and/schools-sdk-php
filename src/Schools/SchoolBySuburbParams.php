@@ -12,7 +12,7 @@ use Schools\Core\Contracts\BaseModel;
 /**
  * Get schools by suburb.
  *
- * @see Schools\Schools->bySuburb
+ * @see Schools\Services\SchoolsService::bySuburb()
  *
  * @phpstan-type SchoolBySuburbParamsShape = array{limit?: int, page?: int}
  */

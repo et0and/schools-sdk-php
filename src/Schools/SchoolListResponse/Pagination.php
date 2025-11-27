@@ -10,7 +10,7 @@ use Schools\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PaginationShape = array{
- *   limit?: int, page?: int, total?: int, totalPages?: int
+ *   limit?: int|null, page?: int|null, total?: int|null, totalPages?: int|null
  * }
  */
 final class Pagination implements BaseModel

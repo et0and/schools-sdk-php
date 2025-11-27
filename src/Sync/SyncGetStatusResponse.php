@@ -12,7 +12,9 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SyncGetStatusResponseShape = array{
- *   isStale?: bool, lastSync?: \DateTimeInterface|null, recordCount?: int
+ *   isStale?: bool|null,
+ *   lastSync?: \DateTimeInterface|null,
+ *   recordCount?: int|null,
  * }
  */
 final class SyncGetStatusResponse implements BaseModel, ResponseConverter
