@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 (2025-12-04)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/et0and/schools-sdk-php/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* be more targeted in suppressing superfluous linter warnings ([5144c0c](https://github.com/et0and/schools-sdk-php/commit/5144c0c5e3be8d982c7e96676c09361b5c8c663d))
+* use non-trivial test assertions ([75c34af](https://github.com/et0and/schools-sdk-php/commit/75c34afaf5942fc5569aa18750c1430975bea03a))
+* use single quote strings ([a4f0101](https://github.com/et0and/schools-sdk-php/commit/a4f0101e463f70805a80e84508f80255b48d30c1))
+
 ## 0.2.0 (2025-11-25)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/et0and/schools-sdk-php/compare/v0.1.1...v0.2.0)
