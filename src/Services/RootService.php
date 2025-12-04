@@ -27,7 +27,7 @@ final class RootService implements RootContract
     public function retrieve(
         ?RequestOptions $requestOptions = null
     ): RootGetResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: '',

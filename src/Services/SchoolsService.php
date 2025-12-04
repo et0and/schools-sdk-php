@@ -36,7 +36,7 @@ final class SchoolsService implements SchoolsContract
         string $schoolID,
         ?RequestOptions $requestOptions = null
     ): SchoolGetResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['v1/schools/id/%1$s', $schoolID],
@@ -72,7 +72,7 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'v1/schools',
@@ -101,7 +101,7 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['v1/schools/authority/%1$s', $authority],
@@ -130,7 +130,7 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['v1/schools/city/%1$s', $city],
@@ -159,7 +159,7 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['v1/schools/status/%1$s', $status],
@@ -188,7 +188,7 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['v1/schools/suburb/%1$s', $suburb],
@@ -216,7 +216,7 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'v1/schools/search',
