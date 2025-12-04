@@ -6,6 +6,7 @@ use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Schools\Client;
+use Schools\Health\HealthCheckResponse;
 use Tests\UnsupportedMockTests;
 
 /**
@@ -35,6 +36,7 @@ final class HealthTest extends TestCase
 
         $result = $this->client->health->check();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HealthCheckResponse::class, $result);
     }
 }

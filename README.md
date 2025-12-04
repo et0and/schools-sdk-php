@@ -48,8 +48,8 @@ Parameters with a default value must be set by name.
 use Schools\Client;
 
 $client = new Client(
-  apiKey: getenv("SCHOOLS_API_KEY") ?: "My API Key",
-  environment: "environment_1",
+  apiKey: getenv('SCHOOLS_API_KEY') ?: 'My API Key',
+  environment: 'environment_1',
 );
 
 $response = $client->health->check();
@@ -140,9 +140,9 @@ use Schools\RequestOptions;
 
 $response = $client->health->check(
   RequestOptions::with(
-    extraQueryParams: ["my_query_parameter" => "value"],
-    extraBodyParams: ["my_body_parameter" => "value"],
-    extraHeaders: ["my-header" => "value"],
+    extraQueryParams: ['my_query_parameter' => 'value'],
+    extraBodyParams: ['my_body_parameter' => 'value'],
+    extraHeaders: ['my-header' => 'value'],
   ),
 );
 ```
