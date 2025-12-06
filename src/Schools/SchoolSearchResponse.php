@@ -41,15 +41,18 @@ final class SchoolSearchResponse implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $data
+     * @param Pagination|array{
+     *   limit?: int|null, page?: int|null, total?: int|null, totalPages?: int|null
+     * } $pagination
      */
     public static function with(
         ?array $data = null,
-        ?Pagination $pagination = null
+        Pagination|array|null $pagination = null
     ): self {
         $obj = new self;
 
-        null !== $data && $obj->data = $data;
-        null !== $pagination && $obj->pagination = $pagination;
+        null !== $data && $obj['data'] = $data;
+        null !== $pagination && $obj['pagination'] = $pagination;
 
         return $obj;
     }
@@ -60,15 +63,20 @@ final class SchoolSearchResponse implements BaseModel, ResponseConverter
     public function withData(array $data): self
     {
         $obj = clone $this;
-        $obj->data = $data;
+        $obj['data'] = $data;
 
         return $obj;
     }
 
-    public function withPagination(Pagination $pagination): self
+    /**
+     * @param Pagination|array{
+     *   limit?: int|null, page?: int|null, total?: int|null, totalPages?: int|null
+     * } $pagination
+     */
+    public function withPagination(Pagination|array $pagination): self
     {
         $obj = clone $this;
-        $obj->pagination = $pagination;
+        $obj['pagination'] = $pagination;
 
         return $obj;
     }

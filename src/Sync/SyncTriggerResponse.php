@@ -55,10 +55,10 @@ final class SyncTriggerResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $error && $obj->error = $error;
-        null !== $lastSync && $obj->lastSync = $lastSync;
-        null !== $recordCount && $obj->recordCount = $recordCount;
-        null !== $success && $obj->success = $success;
+        null !== $error && $obj['error'] = $error;
+        null !== $lastSync && $obj['lastSync'] = $lastSync;
+        null !== $recordCount && $obj['recordCount'] = $recordCount;
+        null !== $success && $obj['success'] = $success;
 
         return $obj;
     }
@@ -66,7 +66,7 @@ final class SyncTriggerResponse implements BaseModel, ResponseConverter
     public function withError(string $error): self
     {
         $obj = clone $this;
-        $obj->error = $error;
+        $obj['error'] = $error;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class SyncTriggerResponse implements BaseModel, ResponseConverter
     public function withLastSync(\DateTimeInterface $lastSync): self
     {
         $obj = clone $this;
-        $obj->lastSync = $lastSync;
+        $obj['lastSync'] = $lastSync;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class SyncTriggerResponse implements BaseModel, ResponseConverter
     public function withRecordCount(int $recordCount): self
     {
         $obj = clone $this;
-        $obj->recordCount = $recordCount;
+        $obj['recordCount'] = $recordCount;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class SyncTriggerResponse implements BaseModel, ResponseConverter
     public function withSuccess(bool $success): self
     {
         $obj = clone $this;
-        $obj->success = $success;
+        $obj['success'] = $success;
 
         return $obj;
     }
