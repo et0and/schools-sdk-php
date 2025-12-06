@@ -50,9 +50,9 @@ final class SyncGetStatusResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $isStale && $obj->isStale = $isStale;
-        null !== $lastSync && $obj->lastSync = $lastSync;
-        null !== $recordCount && $obj->recordCount = $recordCount;
+        null !== $isStale && $obj['isStale'] = $isStale;
+        null !== $lastSync && $obj['lastSync'] = $lastSync;
+        null !== $recordCount && $obj['recordCount'] = $recordCount;
 
         return $obj;
     }
@@ -60,7 +60,7 @@ final class SyncGetStatusResponse implements BaseModel, ResponseConverter
     public function withIsStale(bool $isStale): self
     {
         $obj = clone $this;
-        $obj->isStale = $isStale;
+        $obj['isStale'] = $isStale;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class SyncGetStatusResponse implements BaseModel, ResponseConverter
     public function withLastSync(?\DateTimeInterface $lastSync): self
     {
         $obj = clone $this;
-        $obj->lastSync = $lastSync;
+        $obj['lastSync'] = $lastSync;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class SyncGetStatusResponse implements BaseModel, ResponseConverter
     public function withRecordCount(int $recordCount): self
     {
         $obj = clone $this;
-        $obj->recordCount = $recordCount;
+        $obj['recordCount'] = $recordCount;
 
         return $obj;
     }

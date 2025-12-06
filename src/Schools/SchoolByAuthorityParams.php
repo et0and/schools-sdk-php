@@ -42,8 +42,8 @@ final class SchoolByAuthorityParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $page && $obj->page = $page;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $page && $obj['page'] = $page;
 
         return $obj;
     }
@@ -51,7 +51,7 @@ final class SchoolByAuthorityParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class SchoolByAuthorityParams implements BaseModel
     public function withPage(int $page): self
     {
         $obj = clone $this;
-        $obj->page = $page;
+        $obj['page'] = $page;
 
         return $obj;
     }

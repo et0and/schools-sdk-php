@@ -73,10 +73,10 @@ final class SchoolSearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->q = $q;
+        $obj['q'] = $q;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $page && $obj->page = $page;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $page && $obj['page'] = $page;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class SchoolSearchParams implements BaseModel
     public function withQ(string $q): self
     {
         $obj = clone $this;
-        $obj->q = $q;
+        $obj['q'] = $q;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class SchoolSearchParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class SchoolSearchParams implements BaseModel
     public function withPage(int $page): self
     {
         $obj = clone $this;
-        $obj->page = $page;
+        $obj['page'] = $page;
 
         return $obj;
     }

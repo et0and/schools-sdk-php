@@ -101,14 +101,14 @@ final class SchoolListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $authority && $obj->authority = $authority;
-        null !== $city && $obj->city = $city;
-        null !== $limit && $obj->limit = $limit;
-        null !== $name && $obj->name = $name;
-        null !== $org_type && $obj->org_type = $org_type;
-        null !== $page && $obj->page = $page;
-        null !== $status && $obj->status = $status;
-        null !== $suburb && $obj->suburb = $suburb;
+        null !== $authority && $obj['authority'] = $authority;
+        null !== $city && $obj['city'] = $city;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $name && $obj['name'] = $name;
+        null !== $org_type && $obj['org_type'] = $org_type;
+        null !== $page && $obj['page'] = $page;
+        null !== $status && $obj['status'] = $status;
+        null !== $suburb && $obj['suburb'] = $suburb;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class SchoolListParams implements BaseModel
     public function withAuthority(string $authority): self
     {
         $obj = clone $this;
-        $obj->authority = $authority;
+        $obj['authority'] = $authority;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class SchoolListParams implements BaseModel
     public function withCity(string $city): self
     {
         $obj = clone $this;
-        $obj->city = $city;
+        $obj['city'] = $city;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class SchoolListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class SchoolListParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class SchoolListParams implements BaseModel
     public function withOrgType(string $orgType): self
     {
         $obj = clone $this;
-        $obj->org_type = $orgType;
+        $obj['org_type'] = $orgType;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class SchoolListParams implements BaseModel
     public function withPage(int $page): self
     {
         $obj = clone $this;
-        $obj->page = $page;
+        $obj['page'] = $page;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class SchoolListParams implements BaseModel
     public function withStatus(string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -196,7 +196,7 @@ final class SchoolListParams implements BaseModel
     public function withSuburb(string $suburb): self
     {
         $obj = clone $this;
-        $obj->suburb = $suburb;
+        $obj['suburb'] = $suburb;
 
         return $obj;
     }

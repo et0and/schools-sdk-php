@@ -55,10 +55,10 @@ final class RootGetResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $docs && $obj->docs = $docs;
-        null !== $endpoints && $obj->endpoints = $endpoints;
-        null !== $message && $obj->message = $message;
-        null !== $version && $obj->version = $version;
+        null !== $docs && $obj['docs'] = $docs;
+        null !== $endpoints && $obj['endpoints'] = $endpoints;
+        null !== $message && $obj['message'] = $message;
+        null !== $version && $obj['version'] = $version;
 
         return $obj;
     }
@@ -66,7 +66,7 @@ final class RootGetResponse implements BaseModel, ResponseConverter
     public function withDocs(string $docs): self
     {
         $obj = clone $this;
-        $obj->docs = $docs;
+        $obj['docs'] = $docs;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class RootGetResponse implements BaseModel, ResponseConverter
     public function withEndpoints(mixed $endpoints): self
     {
         $obj = clone $this;
-        $obj->endpoints = $endpoints;
+        $obj['endpoints'] = $endpoints;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class RootGetResponse implements BaseModel, ResponseConverter
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class RootGetResponse implements BaseModel, ResponseConverter
     public function withVersion(string $version): self
     {
         $obj = clone $this;
-        $obj->version = $version;
+        $obj['version'] = $version;
 
         return $obj;
     }

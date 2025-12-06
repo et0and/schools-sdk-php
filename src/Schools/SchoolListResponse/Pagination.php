@@ -48,10 +48,10 @@ final class Pagination implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $page && $obj->page = $page;
-        null !== $total && $obj->total = $total;
-        null !== $totalPages && $obj->totalPages = $totalPages;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $page && $obj['page'] = $page;
+        null !== $total && $obj['total'] = $total;
+        null !== $totalPages && $obj['totalPages'] = $totalPages;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class Pagination implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class Pagination implements BaseModel
     public function withPage(int $page): self
     {
         $obj = clone $this;
-        $obj->page = $page;
+        $obj['page'] = $page;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class Pagination implements BaseModel
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class Pagination implements BaseModel
     public function withTotalPages(int $totalPages): self
     {
         $obj = clone $this;
-        $obj->totalPages = $totalPages;
+        $obj['totalPages'] = $totalPages;
 
         return $obj;
     }

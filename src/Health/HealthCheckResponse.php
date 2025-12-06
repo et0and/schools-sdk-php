@@ -44,8 +44,8 @@ final class HealthCheckResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $status && $obj->status = $status;
-        null !== $timestamp && $obj->timestamp = $timestamp;
+        null !== $status && $obj['status'] = $status;
+        null !== $timestamp && $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class HealthCheckResponse implements BaseModel, ResponseConverter
     public function withStatus(string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class HealthCheckResponse implements BaseModel, ResponseConverter
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }

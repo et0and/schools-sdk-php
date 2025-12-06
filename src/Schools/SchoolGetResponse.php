@@ -37,7 +37,7 @@ final class SchoolGetResponse implements BaseModel, ResponseConverter
     {
         $obj = new self;
 
-        null !== $data && $obj->data = $data;
+        null !== $data && $obj['data'] = $data;
 
         return $obj;
     }
@@ -45,7 +45,7 @@ final class SchoolGetResponse implements BaseModel, ResponseConverter
     public function withData(mixed $data): self
     {
         $obj = clone $this;
-        $obj->data = $data;
+        $obj['data'] = $data;
 
         return $obj;
     }
