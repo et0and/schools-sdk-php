@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Contracts\BaseModel;
 use Schools\Schools\SchoolSearchResponse\Pagination;
@@ -20,10 +20,10 @@ final class SchoolSearchResponse implements BaseModel
     use SdkModel;
 
     /** @var list<mixed>|null $data */
-    #[Api(list: 'mixed', optional: true)]
+    #[Optional(list: 'mixed')]
     public ?array $data;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Pagination $pagination;
 
     public function __construct()

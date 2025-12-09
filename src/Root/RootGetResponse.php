@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Root;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class RootGetResponse implements BaseModel
     /** @use SdkModel<RootGetResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $docs;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $endpoints;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $version;
 
     public function __construct()

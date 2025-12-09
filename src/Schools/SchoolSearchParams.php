@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
+use Schools\Core\Attributes\Required;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Concerns\SdkParams;
 use Schools\Core\Contracts\BaseModel;
@@ -27,19 +28,19 @@ final class SchoolSearchParams implements BaseModel
     /**
      * Search query.
      */
-    #[Api]
+    #[Required]
     public string $q;
 
     /**
      * Results per page (default: 20, max: 100).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Page number (default: 1).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page;
 
     /**

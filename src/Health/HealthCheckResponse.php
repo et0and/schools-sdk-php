@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Health;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class HealthCheckResponse implements BaseModel
     /** @use SdkModel<HealthCheckResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $timestamp;
 
     public function __construct()

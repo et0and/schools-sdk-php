@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Schools\SchoolListResponse;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Contracts\BaseModel;
 
@@ -18,16 +18,16 @@ final class Pagination implements BaseModel
     /** @use SdkModel<PaginationShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $totalPages;
 
     public function __construct()

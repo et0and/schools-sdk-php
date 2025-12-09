@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Concerns\SdkParams;
 use Schools\Core\Contracts\BaseModel;
@@ -34,49 +34,49 @@ final class SchoolListParams implements BaseModel
     /**
      * Filter by education authority.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $authority;
 
     /**
      * Filter by city (partial match).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $city;
 
     /**
      * Results per page (default: 20, max: 100).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Filter by school name (partial match).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * Filter by organization type.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $org_type;
 
     /**
      * Page number (default: 1).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page;
 
     /**
      * Filter by school status.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $status;
 
     /**
      * Filter by suburb (partial match).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $suburb;
 
     public function __construct()
