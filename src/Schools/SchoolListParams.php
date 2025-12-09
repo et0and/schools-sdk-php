@@ -19,7 +19,7 @@ use Schools\Core\Contracts\BaseModel;
  *   city?: string,
  *   limit?: int,
  *   name?: string,
- *   org_type?: string,
+ *   orgType?: string,
  *   page?: int,
  *   status?: string,
  *   suburb?: string,
@@ -59,7 +59,7 @@ final class SchoolListParams implements BaseModel
      * Filter by organization type.
      */
     #[Optional]
-    public ?string $org_type;
+    public ?string $orgType;
 
     /**
      * Page number (default: 1).
@@ -94,7 +94,7 @@ final class SchoolListParams implements BaseModel
         ?string $city = null,
         ?int $limit = null,
         ?string $name = null,
-        ?string $org_type = null,
+        ?string $orgType = null,
         ?int $page = null,
         ?string $status = null,
         ?string $suburb = null,
@@ -105,7 +105,7 @@ final class SchoolListParams implements BaseModel
         null !== $city && $obj['city'] = $city;
         null !== $limit && $obj['limit'] = $limit;
         null !== $name && $obj['name'] = $name;
-        null !== $org_type && $obj['org_type'] = $org_type;
+        null !== $orgType && $obj['orgType'] = $orgType;
         null !== $page && $obj['page'] = $page;
         null !== $status && $obj['status'] = $status;
         null !== $suburb && $obj['suburb'] = $suburb;
@@ -163,7 +163,7 @@ final class SchoolListParams implements BaseModel
     public function withOrgType(string $orgType): self
     {
         $obj = clone $this;
-        $obj['org_type'] = $orgType;
+        $obj['orgType'] = $orgType;
 
         return $obj;
     }
