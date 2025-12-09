@@ -7,6 +7,7 @@ namespace Schools\Services;
 use Schools\Client;
 use Schools\Core\Contracts\BaseResponse;
 use Schools\Core\Exceptions\APIException;
+use Schools\Core\Util;
 use Schools\RequestOptions;
 use Schools\Schools\SchoolByAuthorityParams;
 use Schools\Schools\SchoolByCityParams;
@@ -58,7 +59,7 @@ final class SchoolsService implements SchoolsContract
      *   city?: string,
      *   limit?: int,
      *   name?: string,
-     *   org_type?: string,
+     *   orgType?: string,
      *   page?: int,
      *   status?: string,
      *   suburb?: string,
@@ -79,7 +80,7 @@ final class SchoolsService implements SchoolsContract
         $response = $this->client->request(
             method: 'get',
             path: 'v1/schools',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['orgType' => 'org_type']),
             options: $options,
             convert: SchoolListResponse::class,
         );
