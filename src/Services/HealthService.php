@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Schools\Services;
 
 use Schools\Client;
+use Schools\Core\Contracts\BaseResponse;
 use Schools\Core\Exceptions\APIException;
 use Schools\Health\HealthCheckResponse;
 use Schools\RequestOptions;
@@ -27,12 +28,14 @@ final class HealthService implements HealthContract
     public function check(
         ?RequestOptions $requestOptions = null
     ): HealthCheckResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HealthCheckResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'health',
             options: $requestOptions,
             convert: HealthCheckResponse::class,
         );
+
+        return $response->parse();
     }
 }

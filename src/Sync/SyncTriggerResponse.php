@@ -6,9 +6,7 @@ namespace Schools\Sync;
 
 use Schools\Core\Attributes\Api;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SyncTriggerResponseShape = array{
@@ -18,12 +16,10 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
  *   success?: bool|null,
  * }
  */
-final class SyncTriggerResponse implements BaseModel, ResponseConverter
+final class SyncTriggerResponse implements BaseModel
 {
     /** @use SdkModel<SyncTriggerResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $error;

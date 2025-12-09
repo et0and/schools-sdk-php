@@ -6,21 +6,17 @@ namespace Schools\Health;
 
 use Schools\Core\Attributes\Api;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type HealthCheckResponseShape = array{
  *   status?: string|null, timestamp?: \DateTimeInterface|null
  * }
  */
-final class HealthCheckResponse implements BaseModel, ResponseConverter
+final class HealthCheckResponse implements BaseModel
 {
     /** @use SdkModel<HealthCheckResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $status;

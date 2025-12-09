@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace Schools\Core\Contracts;
 
-use Psr\Http\Message\ResponseInterface;
-use Schools\Client;
-use Schools\Core\Conversion\Contracts\Converter;
-use Schools\Core\Conversion\Contracts\ConverterSource;
-use Schools\RequestOptions;
-
 /**
  * @internal
  *
@@ -21,19 +15,6 @@ use Schools\RequestOptions;
  */
 interface BasePage extends \IteratorAggregate
 {
-    /**
-     * @internal
-     *
-     * @param normalized_request $request
-     */
-    public function __construct(
-        Converter|ConverterSource|string $convert,
-        Client $client,
-        array $request,
-        RequestOptions $options,
-        ResponseInterface $response,
-    );
-
     public function hasNextPage(): bool;
 
     /**

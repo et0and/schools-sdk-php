@@ -6,9 +6,7 @@ namespace Schools\Root;
 
 use Schools\Core\Attributes\Api;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type RootGetResponseShape = array{
@@ -18,12 +16,10 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
  *   version?: string|null,
  * }
  */
-final class RootGetResponse implements BaseModel, ResponseConverter
+final class RootGetResponse implements BaseModel
 {
     /** @use SdkModel<RootGetResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $docs;

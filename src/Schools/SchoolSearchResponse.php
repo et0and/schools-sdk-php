@@ -6,9 +6,7 @@ namespace Schools\Schools;
 
 use Schools\Core\Attributes\Api;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 use Schools\Schools\SchoolSearchResponse\Pagination;
 
 /**
@@ -16,12 +14,10 @@ use Schools\Schools\SchoolSearchResponse\Pagination;
  *   data?: list<mixed>|null, pagination?: Pagination|null
  * }
  */
-final class SchoolSearchResponse implements BaseModel, ResponseConverter
+final class SchoolSearchResponse implements BaseModel
 {
     /** @use SdkModel<SchoolSearchResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<mixed>|null $data */
     #[Api(list: 'mixed', optional: true)]

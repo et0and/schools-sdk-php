@@ -6,9 +6,7 @@ namespace Schools\Sync;
 
 use Schools\Core\Attributes\Api;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SyncGetStatusResponseShape = array{
@@ -17,12 +15,10 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
  *   recordCount?: int|null,
  * }
  */
-final class SyncGetStatusResponse implements BaseModel, ResponseConverter
+final class SyncGetStatusResponse implements BaseModel
 {
     /** @use SdkModel<SyncGetStatusResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?bool $isStale;
