@@ -6,19 +6,15 @@ namespace Schools\Schools;
 
 use Schools\Core\Attributes\Api;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SchoolGetResponseShape = array{data?: mixed}
  */
-final class SchoolGetResponse implements BaseModel, ResponseConverter
+final class SchoolGetResponse implements BaseModel
 {
     /** @use SdkModel<SchoolGetResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public mixed $data;

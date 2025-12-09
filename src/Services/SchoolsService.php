@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Schools\Services;
 
 use Schools\Client;
+use Schools\Core\Contracts\BaseResponse;
 use Schools\Core\Exceptions\APIException;
 use Schools\RequestOptions;
 use Schools\Schools\SchoolByAuthorityParams;
@@ -36,13 +37,15 @@ final class SchoolsService implements SchoolsContract
         string $schoolID,
         ?RequestOptions $requestOptions = null
     ): SchoolGetResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SchoolGetResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['v1/schools/id/%1$s', $schoolID],
             options: $requestOptions,
             convert: SchoolGetResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -72,14 +75,16 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SchoolListResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'v1/schools',
             query: $parsed,
             options: $options,
             convert: SchoolListResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -101,14 +106,16 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['v1/schools/authority/%1$s', $authority],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -130,14 +137,16 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['v1/schools/city/%1$s', $city],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -159,14 +168,16 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['v1/schools/status/%1$s', $status],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -188,14 +199,16 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'get',
             path: ['v1/schools/suburb/%1$s', $suburb],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -216,13 +229,15 @@ final class SchoolsService implements SchoolsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SchoolSearchResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'v1/schools/search',
             query: $parsed,
             options: $options,
             convert: SchoolSearchResponse::class,
         );
+
+        return $response->parse();
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Schools\Services;
 
 use Schools\Client;
+use Schools\Core\Contracts\BaseResponse;
 use Schools\Core\Exceptions\APIException;
 use Schools\RequestOptions;
 use Schools\Root\RootGetResponse;
@@ -27,12 +28,14 @@ final class RootService implements RootContract
     public function retrieve(
         ?RequestOptions $requestOptions = null
     ): RootGetResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<RootGetResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: '',
             options: $requestOptions,
             convert: RootGetResponse::class,
         );
+
+        return $response->parse();
     }
 }
