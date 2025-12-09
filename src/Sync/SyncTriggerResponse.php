@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Sync;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class SyncTriggerResponse implements BaseModel
     /** @use SdkModel<SyncTriggerResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $error;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $lastSync;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $recordCount;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $success;
 
     public function __construct()

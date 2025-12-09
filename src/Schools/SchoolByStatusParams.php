@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Concerns\SdkParams;
 use Schools\Core\Contracts\BaseModel;
@@ -22,10 +22,10 @@ final class SchoolByStatusParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page;
 
     public function __construct()

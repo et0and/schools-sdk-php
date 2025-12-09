@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Contracts\BaseModel;
 
@@ -16,7 +16,7 @@ final class SchoolGetResponse implements BaseModel
     /** @use SdkModel<SchoolGetResponseShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $data;
 
     public function __construct()
