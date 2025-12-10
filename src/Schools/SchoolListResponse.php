@@ -45,12 +45,12 @@ final class SchoolListResponse implements BaseModel
         ?array $data = null,
         Pagination|array|null $pagination = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $data && $obj['data'] = $data;
-        null !== $pagination && $obj['pagination'] = $pagination;
+        null !== $data && $self['data'] = $data;
+        null !== $pagination && $self['pagination'] = $pagination;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -58,10 +58,10 @@ final class SchoolListResponse implements BaseModel
      */
     public function withData(array $data): self
     {
-        $obj = clone $this;
-        $obj['data'] = $data;
+        $self = clone $this;
+        $self['data'] = $data;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,9 +71,9 @@ final class SchoolListResponse implements BaseModel
      */
     public function withPagination(Pagination|array $pagination): self
     {
-        $obj = clone $this;
-        $obj['pagination'] = $pagination;
+        $self = clone $this;
+        $self['pagination'] = $pagination;
 
-        return $obj;
+        return $self;
     }
 }

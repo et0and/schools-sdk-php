@@ -38,27 +38,27 @@ final class HealthCheckResponse implements BaseModel
         ?string $status = null,
         ?\DateTimeInterface $timestamp = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $status && $obj['status'] = $status;
-        null !== $timestamp && $obj['timestamp'] = $timestamp;
+        null !== $status && $self['status'] = $status;
+        null !== $timestamp && $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
-        $obj = clone $this;
-        $obj['timestamp'] = $timestamp;
+        $self = clone $this;
+        $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 }

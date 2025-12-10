@@ -49,45 +49,45 @@ final class RootGetResponse implements BaseModel
         ?string $message = null,
         ?string $version = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $docs && $obj['docs'] = $docs;
-        null !== $endpoints && $obj['endpoints'] = $endpoints;
-        null !== $message && $obj['message'] = $message;
-        null !== $version && $obj['version'] = $version;
+        null !== $docs && $self['docs'] = $docs;
+        null !== $endpoints && $self['endpoints'] = $endpoints;
+        null !== $message && $self['message'] = $message;
+        null !== $version && $self['version'] = $version;
 
-        return $obj;
+        return $self;
     }
 
     public function withDocs(string $docs): self
     {
-        $obj = clone $this;
-        $obj['docs'] = $docs;
+        $self = clone $this;
+        $self['docs'] = $docs;
 
-        return $obj;
+        return $self;
     }
 
     public function withEndpoints(mixed $endpoints): self
     {
-        $obj = clone $this;
-        $obj['endpoints'] = $endpoints;
+        $self = clone $this;
+        $self['endpoints'] = $endpoints;
 
-        return $obj;
+        return $self;
     }
 
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     public function withVersion(string $version): self
     {
-        $obj = clone $this;
-        $obj['version'] = $version;
+        $self = clone $this;
+        $self['version'] = $version;
 
-        return $obj;
+        return $self;
     }
 }
