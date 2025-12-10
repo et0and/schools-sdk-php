@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Schools\Services;
 
 use Schools\Client;
-use Schools\Core\Contracts\BaseResponse;
 use Schools\Core\Exceptions\APIException;
 use Schools\RequestOptions;
 use Schools\ServiceContracts\SyncContract;
@@ -15,9 +14,17 @@ use Schools\Sync\SyncTriggerResponse;
 final class SyncService implements SyncContract
 {
     /**
+     * @api
+     */
+    public SyncRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SyncRawService($client);
+    }
 
     /**
      * @api
@@ -29,13 +36,8 @@ final class SyncService implements SyncContract
     public function getStatus(
         ?RequestOptions $requestOptions = null
     ): SyncGetStatusResponse {
-        /** @var BaseResponse<SyncGetStatusResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'v1/sync/status',
-            options: $requestOptions,
-            convert: SyncGetStatusResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getStatus(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -50,13 +52,8 @@ final class SyncService implements SyncContract
     public function trigger(
         ?RequestOptions $requestOptions = null
     ): SyncTriggerResponse {
-        /** @var BaseResponse<SyncTriggerResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'v1/sync',
-            options: $requestOptions,
-            convert: SyncTriggerResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->trigger(requestOptions: $requestOptions);
 
         return $response->parse();
     }

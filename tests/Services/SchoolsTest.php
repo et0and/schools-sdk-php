@@ -49,7 +49,7 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->list([]);
+        $result = $this->client->schools->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SchoolListResponse::class, $result);
@@ -62,7 +62,7 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->byAuthority('authority', []);
+        $result = $this->client->schools->byAuthority('authority');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -75,7 +75,7 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->byCity('city', []);
+        $result = $this->client->schools->byCity('city');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -88,7 +88,7 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->byStatus('status', []);
+        $result = $this->client->schools->byStatus('status');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -101,7 +101,7 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->bySuburb('suburb', []);
+        $result = $this->client->schools->bySuburb('suburb');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -114,7 +114,7 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->search(['q' => 'x']);
+        $result = $this->client->schools->search(q: 'x');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SchoolSearchResponse::class, $result);
@@ -127,9 +127,7 @@ final class SchoolsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->schools->search([
-            'q' => 'x', 'limit' => 1, 'page' => 1,
-        ]);
+        $result = $this->client->schools->search(q: 'x', limit: 1, page: 1);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SchoolSearchResponse::class, $result);

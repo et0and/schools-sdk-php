@@ -78,7 +78,7 @@ try {
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
-} catch (RateLimitError $_) {
+} catch (RateLimitError $e) {
   echo "A 429 status code was received; we should back off a bit.", PHP_EOL;
 } catch (APIStatusError $e) {
   echo "Another non-200-range status code was received", PHP_EOL;
@@ -120,7 +120,9 @@ use Schools\RequestOptions;
 $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
-$result = $client->health->check(RequestOptions::with(maxRetries: 5));
+$result = $client->health->check(
+  requestOptions: RequestOptions::with(maxRetries: 5)
+);
 ```
 
 ## Advanced concepts
@@ -139,7 +141,7 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use Schools\RequestOptions;
 
 $response = $client->health->check(
-  RequestOptions::with(
+  requestOptions: RequestOptions::with(
     extraQueryParams: ['my_query_parameter' => 'value'],
     extraBodyParams: ['my_body_parameter' => 'value'],
     extraHeaders: ['my-header' => 'value'],
