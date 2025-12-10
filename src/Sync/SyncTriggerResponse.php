@@ -49,45 +49,45 @@ final class SyncTriggerResponse implements BaseModel
         ?int $recordCount = null,
         ?bool $success = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $error && $obj['error'] = $error;
-        null !== $lastSync && $obj['lastSync'] = $lastSync;
-        null !== $recordCount && $obj['recordCount'] = $recordCount;
-        null !== $success && $obj['success'] = $success;
+        null !== $error && $self['error'] = $error;
+        null !== $lastSync && $self['lastSync'] = $lastSync;
+        null !== $recordCount && $self['recordCount'] = $recordCount;
+        null !== $success && $self['success'] = $success;
 
-        return $obj;
+        return $self;
     }
 
     public function withError(string $error): self
     {
-        $obj = clone $this;
-        $obj['error'] = $error;
+        $self = clone $this;
+        $self['error'] = $error;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastSync(\DateTimeInterface $lastSync): self
     {
-        $obj = clone $this;
-        $obj['lastSync'] = $lastSync;
+        $self = clone $this;
+        $self['lastSync'] = $lastSync;
 
-        return $obj;
+        return $self;
     }
 
     public function withRecordCount(int $recordCount): self
     {
-        $obj = clone $this;
-        $obj['recordCount'] = $recordCount;
+        $self = clone $this;
+        $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withSuccess(bool $success): self
     {
-        $obj = clone $this;
-        $obj['success'] = $success;
+        $self = clone $this;
+        $self['success'] = $success;
 
-        return $obj;
+        return $self;
     }
 }

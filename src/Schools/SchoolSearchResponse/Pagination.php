@@ -46,45 +46,45 @@ final class Pagination implements BaseModel
         ?int $total = null,
         ?int $totalPages = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $page && $obj['page'] = $page;
-        null !== $total && $obj['total'] = $total;
-        null !== $totalPages && $obj['totalPages'] = $totalPages;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $page && $self['page'] = $page;
+        null !== $total && $self['total'] = $total;
+        null !== $totalPages && $self['totalPages'] = $totalPages;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     public function withPage(int $page): self
     {
-        $obj = clone $this;
-        $obj['page'] = $page;
+        $self = clone $this;
+        $self['page'] = $page;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotalPages(int $totalPages): self
     {
-        $obj = clone $this;
-        $obj['totalPages'] = $totalPages;
+        $self = clone $this;
+        $self['totalPages'] = $totalPages;
 
-        return $obj;
+        return $self;
     }
 }

@@ -44,36 +44,36 @@ final class SyncGetStatusResponse implements BaseModel
         ?\DateTimeInterface $lastSync = null,
         ?int $recordCount = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $isStale && $obj['isStale'] = $isStale;
-        null !== $lastSync && $obj['lastSync'] = $lastSync;
-        null !== $recordCount && $obj['recordCount'] = $recordCount;
+        null !== $isStale && $self['isStale'] = $isStale;
+        null !== $lastSync && $self['lastSync'] = $lastSync;
+        null !== $recordCount && $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsStale(bool $isStale): self
     {
-        $obj = clone $this;
-        $obj['isStale'] = $isStale;
+        $self = clone $this;
+        $self['isStale'] = $isStale;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastSync(?\DateTimeInterface $lastSync): self
     {
-        $obj = clone $this;
-        $obj['lastSync'] = $lastSync;
+        $self = clone $this;
+        $self['lastSync'] = $lastSync;
 
-        return $obj;
+        return $self;
     }
 
     public function withRecordCount(int $recordCount): self
     {
-        $obj = clone $this;
-        $obj['recordCount'] = $recordCount;
+        $self = clone $this;
+        $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 }

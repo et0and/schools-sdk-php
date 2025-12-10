@@ -99,18 +99,18 @@ final class SchoolListParams implements BaseModel
         ?string $status = null,
         ?string $suburb = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $authority && $obj['authority'] = $authority;
-        null !== $city && $obj['city'] = $city;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $name && $obj['name'] = $name;
-        null !== $orgType && $obj['orgType'] = $orgType;
-        null !== $page && $obj['page'] = $page;
-        null !== $status && $obj['status'] = $status;
-        null !== $suburb && $obj['suburb'] = $suburb;
+        null !== $authority && $self['authority'] = $authority;
+        null !== $city && $self['city'] = $city;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $name && $self['name'] = $name;
+        null !== $orgType && $self['orgType'] = $orgType;
+        null !== $page && $self['page'] = $page;
+        null !== $status && $self['status'] = $status;
+        null !== $suburb && $self['suburb'] = $suburb;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,10 +118,10 @@ final class SchoolListParams implements BaseModel
      */
     public function withAuthority(string $authority): self
     {
-        $obj = clone $this;
-        $obj['authority'] = $authority;
+        $self = clone $this;
+        $self['authority'] = $authority;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class SchoolListParams implements BaseModel
      */
     public function withCity(string $city): self
     {
-        $obj = clone $this;
-        $obj['city'] = $city;
+        $self = clone $this;
+        $self['city'] = $city;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,10 +140,10 @@ final class SchoolListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,10 +151,10 @@ final class SchoolListParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -162,10 +162,10 @@ final class SchoolListParams implements BaseModel
      */
     public function withOrgType(string $orgType): self
     {
-        $obj = clone $this;
-        $obj['orgType'] = $orgType;
+        $self = clone $this;
+        $self['orgType'] = $orgType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,10 +173,10 @@ final class SchoolListParams implements BaseModel
      */
     public function withPage(int $page): self
     {
-        $obj = clone $this;
-        $obj['page'] = $page;
+        $self = clone $this;
+        $self['page'] = $page;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -184,10 +184,10 @@ final class SchoolListParams implements BaseModel
      */
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,9 +195,9 @@ final class SchoolListParams implements BaseModel
      */
     public function withSuburb(string $suburb): self
     {
-        $obj = clone $this;
-        $obj['suburb'] = $suburb;
+        $self = clone $this;
+        $self['suburb'] = $suburb;
 
-        return $obj;
+        return $self;
     }
 }
