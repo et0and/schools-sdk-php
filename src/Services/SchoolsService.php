@@ -6,6 +6,7 @@ namespace Schools\Services;
 
 use Schools\Client;
 use Schools\Core\Exceptions\APIException;
+use Schools\Core\Util;
 use Schools\RequestOptions;
 use Schools\Schools\SchoolGetResponse;
 use Schools\Schools\SchoolListResponse;
@@ -73,18 +74,18 @@ final class SchoolsService implements SchoolsContract
         ?string $suburb = null,
         ?RequestOptions $requestOptions = null,
     ): SchoolListResponse {
-        $params = [
-            'authority' => $authority,
-            'city' => $city,
-            'limit' => $limit,
-            'name' => $name,
-            'orgType' => $orgType,
-            'page' => $page,
-            'status' => $status,
-            'suburb' => $suburb,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'authority' => $authority,
+                'city' => $city,
+                'limit' => $limit,
+                'name' => $name,
+                'orgType' => $orgType,
+                'page' => $page,
+                'status' => $status,
+                'suburb' => $suburb,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -107,9 +108,7 @@ final class SchoolsService implements SchoolsContract
         ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->byAuthority($authority, params: $params, requestOptions: $requestOptions);
@@ -132,9 +131,7 @@ final class SchoolsService implements SchoolsContract
         ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->byCity($city, params: $params, requestOptions: $requestOptions);
@@ -157,9 +154,7 @@ final class SchoolsService implements SchoolsContract
         ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->byStatus($status, params: $params, requestOptions: $requestOptions);
@@ -182,9 +177,7 @@ final class SchoolsService implements SchoolsContract
         ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['limit' => $limit, 'page' => $page];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->bySuburb($suburb, params: $params, requestOptions: $requestOptions);
@@ -209,9 +202,9 @@ final class SchoolsService implements SchoolsContract
         ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): SchoolSearchResponse {
-        $params = ['q' => $q, 'limit' => $limit, 'page' => $page];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['q' => $q, 'limit' => $limit, 'page' => $page]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
