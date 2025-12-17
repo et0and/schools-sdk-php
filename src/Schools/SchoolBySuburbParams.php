@@ -14,7 +14,9 @@ use Schools\Core\Contracts\BaseModel;
  *
  * @see Schools\Services\SchoolsService::bySuburb()
  *
- * @phpstan-type SchoolBySuburbParamsShape = array{limit?: int, page?: int}
+ * @phpstan-type SchoolBySuburbParamsShape = array{
+ *   limit?: int|null, page?: int|null
+ * }
  */
 final class SchoolBySuburbParams implements BaseModel
 {
