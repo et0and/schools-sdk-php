@@ -10,8 +10,10 @@ use Schools\Core\Contracts\BaseModel;
 use Schools\Schools\SchoolListResponse\Pagination;
 
 /**
+ * @phpstan-import-type PaginationShape from \Schools\Schools\SchoolListResponse\Pagination
+ *
  * @phpstan-type SchoolListResponseShape = array{
- *   data?: list<mixed>|null, pagination?: Pagination|null
+ *   data?: list<mixed>|null, pagination?: null|Pagination|PaginationShape
  * }
  */
 final class SchoolListResponse implements BaseModel
@@ -37,9 +39,7 @@ final class SchoolListResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $data
-     * @param Pagination|array{
-     *   limit?: int|null, page?: int|null, total?: int|null, totalPages?: int|null
-     * } $pagination
+     * @param PaginationShape $pagination
      */
     public static function with(
         ?array $data = null,
@@ -65,9 +65,7 @@ final class SchoolListResponse implements BaseModel
     }
 
     /**
-     * @param Pagination|array{
-     *   limit?: int|null, page?: int|null, total?: int|null, totalPages?: int|null
-     * } $pagination
+     * @param PaginationShape $pagination
      */
     public function withPagination(Pagination|array $pagination): self
     {

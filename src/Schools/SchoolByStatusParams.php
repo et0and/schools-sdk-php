@@ -14,7 +14,9 @@ use Schools\Core\Contracts\BaseModel;
  *
  * @see Schools\Services\SchoolsService::byStatus()
  *
- * @phpstan-type SchoolByStatusParamsShape = array{limit?: int, page?: int}
+ * @phpstan-type SchoolByStatusParamsShape = array{
+ *   limit?: int|null, page?: int|null
+ * }
  */
 final class SchoolByStatusParams implements BaseModel
 {

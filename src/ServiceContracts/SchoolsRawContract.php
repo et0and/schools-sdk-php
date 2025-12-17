@@ -36,7 +36,7 @@ interface SchoolsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SchoolListParams $params
+     * @param array<string,mixed>|SchoolListParams $params
      *
      * @return BaseResponse<SchoolListResponse>
      *
@@ -51,7 +51,7 @@ interface SchoolsRawContract
      * @api
      *
      * @param string $authority Education authority
-     * @param array<mixed>|SchoolByAuthorityParams $params
+     * @param array<string,mixed>|SchoolByAuthorityParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -67,7 +67,7 @@ interface SchoolsRawContract
      * @api
      *
      * @param string $city City name
-     * @param array<mixed>|SchoolByCityParams $params
+     * @param array<string,mixed>|SchoolByCityParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -83,7 +83,7 @@ interface SchoolsRawContract
      * @api
      *
      * @param string $status School status
-     * @param array<mixed>|SchoolByStatusParams $params
+     * @param array<string,mixed>|SchoolByStatusParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -99,7 +99,7 @@ interface SchoolsRawContract
      * @api
      *
      * @param string $suburb Suburb name
-     * @param array<mixed>|SchoolBySuburbParams $params
+     * @param array<string,mixed>|SchoolBySuburbParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -114,7 +114,7 @@ interface SchoolsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SchoolSearchParams $params
+     * @param array<string,mixed>|SchoolSearchParams $params
      *
      * @return BaseResponse<SchoolSearchResponse>
      *
