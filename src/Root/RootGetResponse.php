@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Schools\Root;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type RootGetResponseShape = array{
@@ -18,23 +16,21 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
  *   version?: string|null,
  * }
  */
-final class RootGetResponse implements BaseModel, ResponseConverter
+final class RootGetResponse implements BaseModel
 {
     /** @use SdkModel<RootGetResponseShape> */
     use SdkModel;
 
-    use SdkResponse;
-
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $docs;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $endpoints;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $version;
 
     public function __construct()
@@ -53,45 +49,45 @@ final class RootGetResponse implements BaseModel, ResponseConverter
         ?string $message = null,
         ?string $version = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $docs && $obj->docs = $docs;
-        null !== $endpoints && $obj->endpoints = $endpoints;
-        null !== $message && $obj->message = $message;
-        null !== $version && $obj->version = $version;
+        null !== $docs && $self['docs'] = $docs;
+        null !== $endpoints && $self['endpoints'] = $endpoints;
+        null !== $message && $self['message'] = $message;
+        null !== $version && $self['version'] = $version;
 
-        return $obj;
+        return $self;
     }
 
     public function withDocs(string $docs): self
     {
-        $obj = clone $this;
-        $obj->docs = $docs;
+        $self = clone $this;
+        $self['docs'] = $docs;
 
-        return $obj;
+        return $self;
     }
 
     public function withEndpoints(mixed $endpoints): self
     {
-        $obj = clone $this;
-        $obj->endpoints = $endpoints;
+        $self = clone $this;
+        $self['endpoints'] = $endpoints;
 
-        return $obj;
+        return $self;
     }
 
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj->message = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     public function withVersion(string $version): self
     {
-        $obj = clone $this;
-        $obj->version = $version;
+        $self = clone $this;
+        $self['version'] = $version;
 
-        return $obj;
+        return $self;
     }
 }

@@ -4,121 +4,124 @@ declare(strict_types=1);
 
 namespace Schools\ServiceContracts;
 
+use Schools\Core\Contracts\BaseResponse;
 use Schools\Core\Exceptions\APIException;
 use Schools\RequestOptions;
+use Schools\Schools\SchoolByAuthorityParams;
+use Schools\Schools\SchoolByCityParams;
+use Schools\Schools\SchoolByStatusParams;
+use Schools\Schools\SchoolBySuburbParams;
 use Schools\Schools\SchoolGetResponse;
+use Schools\Schools\SchoolListParams;
 use Schools\Schools\SchoolListResponse;
+use Schools\Schools\SchoolSearchParams;
 use Schools\Schools\SchoolSearchResponse;
 
-interface SchoolsContract
+interface SchoolsRawContract
 {
     /**
      * @api
      *
      * @param string $schoolID School ID
      *
+     * @return BaseResponse<SchoolGetResponse>
+     *
      * @throws APIException
      */
     public function retrieve(
         string $schoolID,
         ?RequestOptions $requestOptions = null
-    ): SchoolGetResponse;
+    ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $authority Filter by education authority
-     * @param string $city Filter by city (partial match)
-     * @param int $limit Results per page (default: 20, max: 100)
-     * @param string $name Filter by school name (partial match)
-     * @param string $orgType Filter by organization type
-     * @param int $page Page number (default: 1)
-     * @param string $status Filter by school status
-     * @param string $suburb Filter by suburb (partial match)
+     * @param array<mixed>|SchoolListParams $params
+     *
+     * @return BaseResponse<SchoolListResponse>
      *
      * @throws APIException
      */
     public function list(
-        ?string $authority = null,
-        ?string $city = null,
-        ?int $limit = null,
-        ?string $name = null,
-        ?string $orgType = null,
-        ?int $page = null,
-        ?string $status = null,
-        ?string $suburb = null,
-        ?RequestOptions $requestOptions = null,
-    ): SchoolListResponse;
+        array|SchoolListParams $params,
+        ?RequestOptions $requestOptions = null
+    ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $authority Education authority
+     * @param array<mixed>|SchoolByAuthorityParams $params
+     *
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function byAuthority(
         string $authority,
-        ?int $limit = null,
-        ?int $page = null,
+        array|SchoolByAuthorityParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed;
+    ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $city City name
+     * @param array<mixed>|SchoolByCityParams $params
+     *
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function byCity(
         string $city,
-        ?int $limit = null,
-        ?int $page = null,
+        array|SchoolByCityParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed;
+    ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $status School status
+     * @param array<mixed>|SchoolByStatusParams $params
+     *
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function byStatus(
         string $status,
-        ?int $limit = null,
-        ?int $page = null,
+        array|SchoolByStatusParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed;
+    ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $suburb Suburb name
+     * @param array<mixed>|SchoolBySuburbParams $params
+     *
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function bySuburb(
         string $suburb,
-        ?int $limit = null,
-        ?int $page = null,
+        array|SchoolBySuburbParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed;
+    ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $q Search query
-     * @param int $limit Results per page (default: 20, max: 100)
-     * @param int $page Page number (default: 1)
+     * @param array<mixed>|SchoolSearchParams $params
+     *
+     * @return BaseResponse<SchoolSearchResponse>
      *
      * @throws APIException
      */
     public function search(
-        string $q,
-        ?int $limit = null,
-        ?int $page = null,
-        ?RequestOptions $requestOptions = null,
-    ): SchoolSearchResponse;
+        array|SchoolSearchParams $params,
+        ?RequestOptions $requestOptions = null
+    ): BaseResponse;
 }

@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Schools\Sync;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SyncTriggerResponseShape = array{
@@ -18,23 +16,21 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
  *   success?: bool|null,
  * }
  */
-final class SyncTriggerResponse implements BaseModel, ResponseConverter
+final class SyncTriggerResponse implements BaseModel
 {
     /** @use SdkModel<SyncTriggerResponseShape> */
     use SdkModel;
 
-    use SdkResponse;
-
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $error;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $lastSync;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $recordCount;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $success;
 
     public function __construct()
@@ -53,45 +49,45 @@ final class SyncTriggerResponse implements BaseModel, ResponseConverter
         ?int $recordCount = null,
         ?bool $success = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $error && $obj->error = $error;
-        null !== $lastSync && $obj->lastSync = $lastSync;
-        null !== $recordCount && $obj->recordCount = $recordCount;
-        null !== $success && $obj->success = $success;
+        null !== $error && $self['error'] = $error;
+        null !== $lastSync && $self['lastSync'] = $lastSync;
+        null !== $recordCount && $self['recordCount'] = $recordCount;
+        null !== $success && $self['success'] = $success;
 
-        return $obj;
+        return $self;
     }
 
     public function withError(string $error): self
     {
-        $obj = clone $this;
-        $obj->error = $error;
+        $self = clone $this;
+        $self['error'] = $error;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastSync(\DateTimeInterface $lastSync): self
     {
-        $obj = clone $this;
-        $obj->lastSync = $lastSync;
+        $self = clone $this;
+        $self['lastSync'] = $lastSync;
 
-        return $obj;
+        return $self;
     }
 
     public function withRecordCount(int $recordCount): self
     {
-        $obj = clone $this;
-        $obj->recordCount = $recordCount;
+        $self = clone $this;
+        $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withSuccess(bool $success): self
     {
-        $obj = clone $this;
-        $obj->success = $success;
+        $self = clone $this;
+        $self['success'] = $success;
 
-        return $obj;
+        return $self;
     }
 }

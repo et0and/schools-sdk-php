@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Schools\Sync;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SyncGetStatusResponseShape = array{
@@ -17,20 +15,18 @@ use Schools\Core\Conversion\Contracts\ResponseConverter;
  *   recordCount?: int|null,
  * }
  */
-final class SyncGetStatusResponse implements BaseModel, ResponseConverter
+final class SyncGetStatusResponse implements BaseModel
 {
     /** @use SdkModel<SyncGetStatusResponseShape> */
     use SdkModel;
 
-    use SdkResponse;
-
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isStale;
 
-    #[Api(nullable: true, optional: true)]
+    #[Optional(nullable: true)]
     public ?\DateTimeInterface $lastSync;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $recordCount;
 
     public function __construct()
@@ -48,36 +44,36 @@ final class SyncGetStatusResponse implements BaseModel, ResponseConverter
         ?\DateTimeInterface $lastSync = null,
         ?int $recordCount = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $isStale && $obj->isStale = $isStale;
-        null !== $lastSync && $obj->lastSync = $lastSync;
-        null !== $recordCount && $obj->recordCount = $recordCount;
+        null !== $isStale && $self['isStale'] = $isStale;
+        null !== $lastSync && $self['lastSync'] = $lastSync;
+        null !== $recordCount && $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsStale(bool $isStale): self
     {
-        $obj = clone $this;
-        $obj->isStale = $isStale;
+        $self = clone $this;
+        $self['isStale'] = $isStale;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastSync(?\DateTimeInterface $lastSync): self
     {
-        $obj = clone $this;
-        $obj->lastSync = $lastSync;
+        $self = clone $this;
+        $self['lastSync'] = $lastSync;
 
-        return $obj;
+        return $self;
     }
 
     public function withRecordCount(int $recordCount): self
     {
-        $obj = clone $this;
-        $obj->recordCount = $recordCount;
+        $self = clone $this;
+        $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 }

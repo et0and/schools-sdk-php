@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.3.0 (2025-12-10)
+
+Full Changelog: [v0.2.1...v0.3.0](https://github.com/et0and/schools-sdk-php/compare/v0.2.1...v0.3.0)
+
+### ⚠ BREAKING CHANGES
+
+* use camel casing for all class properties
+
+### Features
+
+* add `BaseResponse` class for accessing raw responses ([c16a5b9](https://github.com/et0and/schools-sdk-php/commit/c16a5b98d80c15ab749ae6861051cc3387e3d0ea))
+* allow both model class instances and arrays in setters ([32a816b](https://github.com/et0and/schools-sdk-php/commit/32a816b2dd505b6428aea1b212deb7a283f5962a))
+* split out services into normal & raw types ([7cd0114](https://github.com/et0and/schools-sdk-php/commit/7cd0114485facc09398732f225c21456ec044b90))
+* use camel casing for all class properties ([fec7285](https://github.com/et0and/schools-sdk-php/commit/fec728518618e88a610b558f22cf03ad307fb1d7))
+
+
+### Chores
+
+* switch from `#[Api(optional: true|false)]` to `#[Required]|#[Optional]` for annotations ([215a9ba](https://github.com/et0and/schools-sdk-php/commit/215a9ba7aef8a67b3fd2449c3494b3763e079da0))
+* use `$self = clone $this;` instead of `$obj = clone $this;` ([1f0595b](https://github.com/et0and/schools-sdk-php/commit/1f0595b7de1993110eb234ac26026ed933a7bdfe))
+
 ## 0.2.1 (2025-12-04)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/et0and/schools-sdk-php/compare/v0.2.0...v0.2.1)

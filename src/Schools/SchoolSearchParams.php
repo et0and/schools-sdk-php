@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
+use Schools\Core\Attributes\Required;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Concerns\SdkParams;
 use Schools\Core\Contracts\BaseModel;
@@ -27,19 +28,19 @@ final class SchoolSearchParams implements BaseModel
     /**
      * Search query.
      */
-    #[Api]
+    #[Required]
     public string $q;
 
     /**
      * Results per page (default: 20, max: 100).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Page number (default: 1).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page;
 
     /**
@@ -71,14 +72,14 @@ final class SchoolSearchParams implements BaseModel
         ?int $limit = null,
         ?int $page = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj->q = $q;
+        $self['q'] = $q;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $page && $obj->page = $page;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $page && $self['page'] = $page;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,10 +87,10 @@ final class SchoolSearchParams implements BaseModel
      */
     public function withQ(string $q): self
     {
-        $obj = clone $this;
-        $obj->q = $q;
+        $self = clone $this;
+        $self['q'] = $q;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,10 +98,10 @@ final class SchoolSearchParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj->limit = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,9 +109,9 @@ final class SchoolSearchParams implements BaseModel
      */
     public function withPage(int $page): self
     {
-        $obj = clone $this;
-        $obj->page = $page;
+        $self = clone $this;
+        $self['page'] = $page;
 
-        return $obj;
+        return $self;
     }
 }

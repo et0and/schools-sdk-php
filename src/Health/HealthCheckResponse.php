@@ -4,28 +4,24 @@ declare(strict_types=1);
 
 namespace Schools\Health;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type HealthCheckResponseShape = array{
  *   status?: string|null, timestamp?: \DateTimeInterface|null
  * }
  */
-final class HealthCheckResponse implements BaseModel, ResponseConverter
+final class HealthCheckResponse implements BaseModel
 {
     /** @use SdkModel<HealthCheckResponseShape> */
     use SdkModel;
 
-    use SdkResponse;
-
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $timestamp;
 
     public function __construct()
@@ -42,27 +38,27 @@ final class HealthCheckResponse implements BaseModel, ResponseConverter
         ?string $status = null,
         ?\DateTimeInterface $timestamp = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $status && $obj->status = $status;
-        null !== $timestamp && $obj->timestamp = $timestamp;
+        null !== $status && $self['status'] = $status;
+        null !== $timestamp && $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj->status = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
-        $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $self = clone $this;
+        $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 }

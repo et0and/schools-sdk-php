@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
-use Schools\Core\Concerns\SdkResponse;
 use Schools\Core\Contracts\BaseModel;
-use Schools\Core\Conversion\Contracts\ResponseConverter;
 use Schools\Schools\SchoolListResponse\Pagination;
 
 /**
@@ -16,18 +14,16 @@ use Schools\Schools\SchoolListResponse\Pagination;
  *   data?: list<mixed>|null, pagination?: Pagination|null
  * }
  */
-final class SchoolListResponse implements BaseModel, ResponseConverter
+final class SchoolListResponse implements BaseModel
 {
     /** @use SdkModel<SchoolListResponseShape> */
     use SdkModel;
 
-    use SdkResponse;
-
     /** @var list<mixed>|null $data */
-    #[Api(list: 'mixed', optional: true)]
+    #[Optional(list: 'mixed')]
     public ?array $data;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Pagination $pagination;
 
     public function __construct()
@@ -41,17 +37,20 @@ final class SchoolListResponse implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $data
+     * @param Pagination|array{
+     *   limit?: int|null, page?: int|null, total?: int|null, totalPages?: int|null
+     * } $pagination
      */
     public static function with(
         ?array $data = null,
-        ?Pagination $pagination = null
+        Pagination|array|null $pagination = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $data && $obj->data = $data;
-        null !== $pagination && $obj->pagination = $pagination;
+        null !== $data && $self['data'] = $data;
+        null !== $pagination && $self['pagination'] = $pagination;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -59,17 +58,22 @@ final class SchoolListResponse implements BaseModel, ResponseConverter
      */
     public function withData(array $data): self
     {
-        $obj = clone $this;
-        $obj->data = $data;
+        $self = clone $this;
+        $self['data'] = $data;
 
-        return $obj;
+        return $self;
     }
 
-    public function withPagination(Pagination $pagination): self
+    /**
+     * @param Pagination|array{
+     *   limit?: int|null, page?: int|null, total?: int|null, totalPages?: int|null
+     * } $pagination
+     */
+    public function withPagination(Pagination|array $pagination): self
     {
-        $obj = clone $this;
-        $obj->pagination = $pagination;
+        $self = clone $this;
+        $self['pagination'] = $pagination;
 
-        return $obj;
+        return $self;
     }
 }

@@ -7,28 +7,32 @@ namespace Schools\Services;
 use Schools\Client;
 use Schools\Core\Exceptions\APIException;
 use Schools\RequestOptions;
-use Schools\Schools\SchoolByAuthorityParams;
-use Schools\Schools\SchoolByCityParams;
-use Schools\Schools\SchoolByStatusParams;
-use Schools\Schools\SchoolBySuburbParams;
 use Schools\Schools\SchoolGetResponse;
-use Schools\Schools\SchoolListParams;
 use Schools\Schools\SchoolListResponse;
-use Schools\Schools\SchoolSearchParams;
 use Schools\Schools\SchoolSearchResponse;
 use Schools\ServiceContracts\SchoolsContract;
 
 final class SchoolsService implements SchoolsContract
 {
     /**
+     * @api
+     */
+    public SchoolsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SchoolsRawService($client);
+    }
 
     /**
      * @api
      *
      * Get school by School ID
+     *
+     * @param string $schoolID School ID
      *
      * @throws APIException
      */
@@ -36,13 +40,10 @@ final class SchoolsService implements SchoolsContract
         string $schoolID,
         ?RequestOptions $requestOptions = null
     ): SchoolGetResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['v1/schools/id/%1$s', $schoolID],
-            options: $requestOptions,
-            convert: SchoolGetResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->retrieve($schoolID, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**
@@ -50,36 +51,45 @@ final class SchoolsService implements SchoolsContract
      *
      * Get all schools with filtering
      *
-     * @param array{
-     *   authority?: string,
-     *   city?: string,
-     *   limit?: int,
-     *   name?: string,
-     *   org_type?: string,
-     *   page?: int,
-     *   status?: string,
-     *   suburb?: string,
-     * }|SchoolListParams $params
+     * @param string $authority Filter by education authority
+     * @param string $city Filter by city (partial match)
+     * @param int $limit Results per page (default: 20, max: 100)
+     * @param string $name Filter by school name (partial match)
+     * @param string $orgType Filter by organization type
+     * @param int $page Page number (default: 1)
+     * @param string $status Filter by school status
+     * @param string $suburb Filter by suburb (partial match)
      *
      * @throws APIException
      */
     public function list(
-        array|SchoolListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $authority = null,
+        ?string $city = null,
+        ?int $limit = null,
+        ?string $name = null,
+        ?string $orgType = null,
+        ?int $page = null,
+        ?string $status = null,
+        ?string $suburb = null,
+        ?RequestOptions $requestOptions = null,
     ): SchoolListResponse {
-        [$parsed, $options] = SchoolListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'authority' => $authority,
+            'city' => $city,
+            'limit' => $limit,
+            'name' => $name,
+            'orgType' => $orgType,
+            'page' => $page,
+            'status' => $status,
+            'suburb' => $suburb,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'v1/schools',
-            query: $parsed,
-            options: $options,
-            convert: SchoolListResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**
@@ -87,28 +97,24 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by authority
      *
-     * @param array{limit?: int, page?: int}|SchoolByAuthorityParams $params
+     * @param string $authority Education authority
      *
      * @throws APIException
      */
     public function byAuthority(
         string $authority,
-        array|SchoolByAuthorityParams $params,
+        ?int $limit = null,
+        ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SchoolByAuthorityParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['limit' => $limit, 'page' => $page];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['v1/schools/authority/%1$s', $authority],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->byAuthority($authority, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**
@@ -116,28 +122,24 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by city
      *
-     * @param array{limit?: int, page?: int}|SchoolByCityParams $params
+     * @param string $city City name
      *
      * @throws APIException
      */
     public function byCity(
         string $city,
-        array|SchoolByCityParams $params,
+        ?int $limit = null,
+        ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SchoolByCityParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['limit' => $limit, 'page' => $page];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['v1/schools/city/%1$s', $city],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->byCity($city, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**
@@ -145,28 +147,24 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by status
      *
-     * @param array{limit?: int, page?: int}|SchoolByStatusParams $params
+     * @param string $status School status
      *
      * @throws APIException
      */
     public function byStatus(
         string $status,
-        array|SchoolByStatusParams $params,
+        ?int $limit = null,
+        ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SchoolByStatusParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['limit' => $limit, 'page' => $page];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['v1/schools/status/%1$s', $status],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->byStatus($status, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**
@@ -174,28 +172,24 @@ final class SchoolsService implements SchoolsContract
      *
      * Get schools by suburb
      *
-     * @param array{limit?: int, page?: int}|SchoolBySuburbParams $params
+     * @param string $suburb Suburb name
      *
      * @throws APIException
      */
     public function bySuburb(
         string $suburb,
-        array|SchoolBySuburbParams $params,
+        ?int $limit = null,
+        ?int $page = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SchoolBySuburbParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['limit' => $limit, 'page' => $page];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['v1/schools/suburb/%1$s', $suburb],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->bySuburb($suburb, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**
@@ -203,26 +197,25 @@ final class SchoolsService implements SchoolsContract
      *
      * Full-text search schools by name
      *
-     * @param array{q: string, limit?: int, page?: int}|SchoolSearchParams $params
+     * @param string $q Search query
+     * @param int $limit Results per page (default: 20, max: 100)
+     * @param int $page Page number (default: 1)
      *
      * @throws APIException
      */
     public function search(
-        array|SchoolSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        string $q,
+        ?int $limit = null,
+        ?int $page = null,
+        ?RequestOptions $requestOptions = null,
     ): SchoolSearchResponse {
-        [$parsed, $options] = SchoolSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['q' => $q, 'limit' => $limit, 'page' => $page];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'v1/schools/search',
-            query: $parsed,
-            options: $options,
-            convert: SchoolSearchResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 }

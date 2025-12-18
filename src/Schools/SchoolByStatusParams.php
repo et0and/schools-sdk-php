@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Schools\Schools;
 
-use Schools\Core\Attributes\Api;
+use Schools\Core\Attributes\Optional;
 use Schools\Core\Concerns\SdkModel;
 use Schools\Core\Concerns\SdkParams;
 use Schools\Core\Contracts\BaseModel;
@@ -22,10 +22,10 @@ final class SchoolByStatusParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $page;
 
     public function __construct()
@@ -40,27 +40,27 @@ final class SchoolByStatusParams implements BaseModel
      */
     public static function with(?int $limit = null, ?int $page = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $page && $obj->page = $page;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $page && $self['page'] = $page;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj->limit = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     public function withPage(int $page): self
     {
-        $obj = clone $this;
-        $obj->page = $page;
+        $self = clone $this;
+        $self['page'] = $page;
 
-        return $obj;
+        return $self;
     }
 }
