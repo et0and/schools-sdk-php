@@ -38,8 +38,8 @@ final class SchoolListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $data
-     * @param PaginationShape $pagination
+     * @param list<mixed>|null $data
+     * @param Pagination|PaginationShape|null $pagination
      */
     public static function with(
         ?array $data = null,
@@ -65,7 +65,7 @@ final class SchoolListResponse implements BaseModel
     }
 
     /**
-     * @param PaginationShape $pagination
+     * @param Pagination|PaginationShape $pagination
      */
     public function withPagination(Pagination|array $pagination): self
     {
