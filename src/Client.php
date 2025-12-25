@@ -7,6 +7,7 @@ namespace Schools;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Schools\Core\BaseClient;
+use Schools\Core\Util;
 use Schools\Services\HealthService;
 use Schools\Services\RootService;
 use Schools\Services\SchoolsService;
