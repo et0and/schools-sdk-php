@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.4.0 (2025-12-26)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/et0and/schools-sdk-php/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* support unwrapping envelopes ([31e5a44](https://github.com/et0and/schools-sdk-php/commit/31e5a44b5cdf871bcfcdb4817b8a00399b3d36e5))
+
+
+### Bug Fixes
+
+* a number of serialization errors ([8dbb258](https://github.com/et0and/schools-sdk-php/commit/8dbb25811b4b9d683fd07f7c6e00e01ae84acde6))
+* correctly serialize dates ([4b4a306](https://github.com/et0and/schools-sdk-php/commit/4b4a30645910f28417394e316d22463fe19d61a4))
+
 ## 0.3.0 (2025-12-10)
 
 Full Changelog: [v0.2.1...v0.3.0](https://github.com/et0and/schools-sdk-php/compare/v0.2.1...v0.3.0)
