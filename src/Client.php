@@ -7,6 +7,7 @@ namespace Schools;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Schools\Core\BaseClient;
+use Schools\Core\Util;
 use Schools\Services\HealthService;
 use Schools\Services\RootService;
 use Schools\Services\SchoolsService;
@@ -54,9 +55,9 @@ class Client extends BaseClient
             headers: [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
-                'User-Agent' => sprintf('schools/PHP %s', '0.3.0'),
+                'User-Agent' => sprintf('schools/PHP %s', '0.4.0'),
                 'X-Stainless-Lang' => 'php',
-                'X-Stainless-Package-Version' => '0.3.0',
+                'X-Stainless-Package-Version' => '0.4.0',
                 'X-Stainless-OS' => $this->getNormalizedOS(),
                 'X-Stainless-Arch' => $this->getNormalizedArchitecture(),
                 'X-Stainless-Runtime' => 'php',
