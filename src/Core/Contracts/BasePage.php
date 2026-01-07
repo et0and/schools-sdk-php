@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Schools\Core\Contracts;
 
 /**
- * @internal
+ * @phpstan-import-type NormalizedRequest from \Schools\Core\BaseClient
  *
- * @phpstan-import-type normalized_request from \Schools\Core\BaseClient
+ * @internal
  *
  * @template Item
  *
