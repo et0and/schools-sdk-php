@@ -14,8 +14,8 @@ use Schools\Services\SchoolsService;
 use Schools\Services\SyncService;
 
 /**
- * @phpstan-import-type RequestOpts from \Schools\RequestOptions
  * @phpstan-import-type NormalizedRequest from \Schools\Core\BaseClient
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
  */
 class Client extends BaseClient
 {
@@ -41,17 +41,26 @@ class Client extends BaseClient
      */
     public SyncService $sync;
 
-    public function __construct(?string $apiKey = null, ?string $baseUrl = null)
-    {
+    /**
+     * @param RequestOpts|null $requestOptions
+     */
+    public function __construct(
+        ?string $apiKey = null,
+        ?string $baseUrl = null,
+        RequestOptions|array|null $requestOptions = null,
+    ) {
         $this->apiKey = (string) ($apiKey ?? getenv('SCHOOLS_API_KEY'));
 
         $baseUrl ??= getenv('SCHOOLS_BASE_URL') ?: 'https://schools.tom.so';
 
-        $options = RequestOptions::with(
-            uriFactory: Psr17FactoryDiscovery::findUriFactory(),
-            streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
-            requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
-            transporter: Psr18ClientDiscovery::find(),
+        $options = RequestOptions::parse(
+            RequestOptions::with(
+                uriFactory: Psr17FactoryDiscovery::findUriFactory(),
+                streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
+                requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
+                transporter: Psr18ClientDiscovery::find(),
+            ),
+            $requestOptions,
         );
 
         parent::__construct(
