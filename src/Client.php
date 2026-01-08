@@ -14,8 +14,8 @@ use Schools\Services\SchoolsService;
 use Schools\Services\SyncService;
 
 /**
- * @phpstan-import-type NormalizedRequest from \Schools\Core\BaseClient
  * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ * @phpstan-import-type NormalizedRequest from \Schools\Core\BaseClient
  */
 class Client extends BaseClient
 {

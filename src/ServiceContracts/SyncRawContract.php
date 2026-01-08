@@ -10,27 +10,34 @@ use Schools\RequestOptions;
 use Schools\Sync\SyncGetStatusResponse;
 use Schools\Sync\SyncTriggerResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 interface SyncRawContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SyncGetStatusResponse>
      *
      * @throws APIException
      */
     public function getStatus(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SyncTriggerResponse>
      *
      * @throws APIException
      */
     public function trigger(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

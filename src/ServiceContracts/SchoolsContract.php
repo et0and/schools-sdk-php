@@ -10,18 +10,22 @@ use Schools\Schools\SchoolGetResponse;
 use Schools\Schools\SchoolListResponse;
 use Schools\Schools\SchoolSearchResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 interface SchoolsContract
 {
     /**
      * @api
      *
      * @param string $schoolID School ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $schoolID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SchoolGetResponse;
 
     /**
@@ -35,6 +39,7 @@ interface SchoolsContract
      * @param int $page Page number (default: 1)
      * @param string $status Filter by school status
      * @param string $suburb Filter by suburb (partial match)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -47,13 +52,14 @@ interface SchoolsContract
         ?int $page = null,
         ?string $status = null,
         ?string $suburb = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SchoolListResponse;
 
     /**
      * @api
      *
      * @param string $authority Education authority
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -61,13 +67,14 @@ interface SchoolsContract
         string $authority,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
      * @param string $city City name
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -75,13 +82,14 @@ interface SchoolsContract
         string $city,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
      * @param string $status School status
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -89,13 +97,14 @@ interface SchoolsContract
         string $status,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
      * @param string $suburb Suburb name
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -103,7 +112,7 @@ interface SchoolsContract
         string $suburb,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -112,6 +121,7 @@ interface SchoolsContract
      * @param string $q Search query
      * @param int $limit Results per page (default: 20, max: 100)
      * @param int $page Page number (default: 1)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -119,6 +129,6 @@ interface SchoolsContract
         string $q,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SchoolSearchResponse;
 }

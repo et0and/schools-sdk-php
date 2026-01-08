@@ -11,6 +11,9 @@ use Schools\RequestOptions;
 use Schools\Root\RootGetResponse;
 use Schools\ServiceContracts\RootRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 final class RootRawService implements RootRawContract
 {
     // @phpstan-ignore-next-line
@@ -24,12 +27,14 @@ final class RootRawService implements RootRawContract
      *
      * API root information
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<RootGetResponse>
      *
      * @throws APIException
      */
     public function retrieve(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

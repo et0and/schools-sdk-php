@@ -20,6 +20,9 @@ use Schools\Schools\SchoolSearchParams;
 use Schools\Schools\SchoolSearchResponse;
 use Schools\ServiceContracts\SchoolsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 final class SchoolsRawService implements SchoolsRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,6 +37,7 @@ final class SchoolsRawService implements SchoolsRawContract
      * Get school by School ID
      *
      * @param string $schoolID School ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchoolGetResponse>
      *
@@ -41,7 +45,7 @@ final class SchoolsRawService implements SchoolsRawContract
      */
     public function retrieve(
         string $schoolID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -67,6 +71,7 @@ final class SchoolsRawService implements SchoolsRawContract
      *   status?: string,
      *   suburb?: string,
      * }|SchoolListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchoolListResponse>
      *
@@ -74,7 +79,7 @@ final class SchoolsRawService implements SchoolsRawContract
      */
     public function list(
         array|SchoolListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchoolListParams::parseRequest(
             $params,
@@ -98,6 +103,7 @@ final class SchoolsRawService implements SchoolsRawContract
      *
      * @param string $authority Education authority
      * @param array{limit?: int, page?: int}|SchoolByAuthorityParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -106,7 +112,7 @@ final class SchoolsRawService implements SchoolsRawContract
     public function byAuthority(
         string $authority,
         array|SchoolByAuthorityParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchoolByAuthorityParams::parseRequest(
             $params,
@@ -130,6 +136,7 @@ final class SchoolsRawService implements SchoolsRawContract
      *
      * @param string $city City name
      * @param array{limit?: int, page?: int}|SchoolByCityParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -138,7 +145,7 @@ final class SchoolsRawService implements SchoolsRawContract
     public function byCity(
         string $city,
         array|SchoolByCityParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchoolByCityParams::parseRequest(
             $params,
@@ -162,6 +169,7 @@ final class SchoolsRawService implements SchoolsRawContract
      *
      * @param string $status School status
      * @param array{limit?: int, page?: int}|SchoolByStatusParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -170,7 +178,7 @@ final class SchoolsRawService implements SchoolsRawContract
     public function byStatus(
         string $status,
         array|SchoolByStatusParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchoolByStatusParams::parseRequest(
             $params,
@@ -194,6 +202,7 @@ final class SchoolsRawService implements SchoolsRawContract
      *
      * @param string $suburb Suburb name
      * @param array{limit?: int, page?: int}|SchoolBySuburbParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -202,7 +211,7 @@ final class SchoolsRawService implements SchoolsRawContract
     public function bySuburb(
         string $suburb,
         array|SchoolBySuburbParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchoolBySuburbParams::parseRequest(
             $params,
@@ -225,6 +234,7 @@ final class SchoolsRawService implements SchoolsRawContract
      * Full-text search schools by name
      *
      * @param array{q: string, limit?: int, page?: int}|SchoolSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchoolSearchResponse>
      *
@@ -232,7 +242,7 @@ final class SchoolsRawService implements SchoolsRawContract
      */
     public function search(
         array|SchoolSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchoolSearchParams::parseRequest(
             $params,

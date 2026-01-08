@@ -9,16 +9,21 @@ use Schools\Core\Exceptions\APIException;
 use Schools\RequestOptions;
 use Schools\Root\RootGetResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 interface RootRawContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RootGetResponse>
      *
      * @throws APIException
      */
     public function retrieve(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }
