@@ -13,6 +13,9 @@ use Schools\Schools\SchoolListResponse;
 use Schools\Schools\SchoolSearchResponse;
 use Schools\ServiceContracts\SchoolsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 final class SchoolsService implements SchoolsContract
 {
     /**
@@ -34,12 +37,13 @@ final class SchoolsService implements SchoolsContract
      * Get school by School ID
      *
      * @param string $schoolID School ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function retrieve(
         string $schoolID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SchoolGetResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve($schoolID, requestOptions: $requestOptions);
@@ -60,6 +64,7 @@ final class SchoolsService implements SchoolsContract
      * @param int $page Page number (default: 1)
      * @param string $status Filter by school status
      * @param string $suburb Filter by suburb (partial match)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -72,7 +77,7 @@ final class SchoolsService implements SchoolsContract
         ?int $page = null,
         ?string $status = null,
         ?string $suburb = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SchoolListResponse {
         $params = Util::removeNulls(
             [
@@ -99,6 +104,7 @@ final class SchoolsService implements SchoolsContract
      * Get schools by authority
      *
      * @param string $authority Education authority
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -106,7 +112,7 @@ final class SchoolsService implements SchoolsContract
         string $authority,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
@@ -122,6 +128,7 @@ final class SchoolsService implements SchoolsContract
      * Get schools by city
      *
      * @param string $city City name
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -129,7 +136,7 @@ final class SchoolsService implements SchoolsContract
         string $city,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
@@ -145,6 +152,7 @@ final class SchoolsService implements SchoolsContract
      * Get schools by status
      *
      * @param string $status School status
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -152,7 +160,7 @@ final class SchoolsService implements SchoolsContract
         string $status,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
@@ -168,6 +176,7 @@ final class SchoolsService implements SchoolsContract
      * Get schools by suburb
      *
      * @param string $suburb Suburb name
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -175,7 +184,7 @@ final class SchoolsService implements SchoolsContract
         string $suburb,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['limit' => $limit, 'page' => $page]);
 
@@ -193,6 +202,7 @@ final class SchoolsService implements SchoolsContract
      * @param string $q Search query
      * @param int $limit Results per page (default: 20, max: 100)
      * @param int $page Page number (default: 1)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -200,7 +210,7 @@ final class SchoolsService implements SchoolsContract
         string $q,
         ?int $limit = null,
         ?int $page = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SchoolSearchResponse {
         $params = Util::removeNulls(
             ['q' => $q, 'limit' => $limit, 'page' => $page]

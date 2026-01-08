@@ -10,6 +10,9 @@ use Schools\RequestOptions;
 use Schools\Root\RootGetResponse;
 use Schools\ServiceContracts\RootContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 final class RootService implements RootContract
 {
     /**
@@ -30,10 +33,12 @@ final class RootService implements RootContract
      *
      * API root information
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function retrieve(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): RootGetResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->retrieve(requestOptions: $requestOptions);
