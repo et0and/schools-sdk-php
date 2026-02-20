@@ -33,7 +33,7 @@ final class SyncTest extends TestCase
     public function testGetStatus(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->sync->getStatus();
@@ -46,7 +46,7 @@ final class SyncTest extends TestCase
     public function testTrigger(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->sync->trigger();

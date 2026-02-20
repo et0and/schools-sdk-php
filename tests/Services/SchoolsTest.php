@@ -34,7 +34,7 @@ final class SchoolsTest extends TestCase
     public function testRetrieve(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->retrieve('schoolId');
@@ -47,7 +47,7 @@ final class SchoolsTest extends TestCase
     public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->list();
@@ -60,7 +60,7 @@ final class SchoolsTest extends TestCase
     public function testByAuthority(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->byAuthority('authority');
@@ -73,7 +73,7 @@ final class SchoolsTest extends TestCase
     public function testByCity(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->byCity('city');
@@ -86,7 +86,7 @@ final class SchoolsTest extends TestCase
     public function testByStatus(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->byStatus('status');
@@ -99,7 +99,7 @@ final class SchoolsTest extends TestCase
     public function testBySuburb(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->bySuburb('suburb');
@@ -112,7 +112,7 @@ final class SchoolsTest extends TestCase
     public function testSearch(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->search(q: 'x');
@@ -125,7 +125,7 @@ final class SchoolsTest extends TestCase
     public function testSearchWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->schools->search(q: 'x', limit: 1, page: 1);
