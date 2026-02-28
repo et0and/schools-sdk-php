@@ -8,14 +8,19 @@ use Schools\Core\Exceptions\APIException;
 use Schools\Health\HealthCheckResponse;
 use Schools\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 interface HealthContract
 {
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function check(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): HealthCheckResponse;
 }

@@ -13,6 +13,10 @@ use Schools\Services\RootService;
 use Schools\Services\SchoolsService;
 use Schools\Services\SyncService;
 
+/**
+ * @phpstan-import-type NormalizedRequest from \Schools\Core\BaseClient
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 class Client extends BaseClient
 {
     public string $apiKey;
@@ -37,21 +41,29 @@ class Client extends BaseClient
      */
     public SyncService $sync;
 
-    public function __construct(?string $apiKey = null, ?string $baseUrl = null)
-    {
-        $this->apiKey = (string) ($apiKey ?? getenv('SCHOOLS_API_KEY'));
+    /**
+     * @param RequestOpts|null $requestOptions
+     */
+    public function __construct(
+        ?string $apiKey = null,
+        ?string $baseUrl = null,
+        RequestOptions|array|null $requestOptions = null,
+    ) {
+        $this->apiKey = (string) ($apiKey ?? Util::getenv('SCHOOLS_API_KEY'));
 
-        $baseUrl ??= getenv('SCHOOLS_BASE_URL') ?: 'https://schools.tom.so';
+        $baseUrl ??= Util::getenv('SCHOOLS_BASE_URL') ?: 'https://schools.tom.so';
 
-        $options = RequestOptions::with(
-            uriFactory: Psr17FactoryDiscovery::findUriFactory(),
-            streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
-            requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
-            transporter: Psr18ClientDiscovery::find(),
+        $options = RequestOptions::parse(
+            RequestOptions::with(
+                uriFactory: Psr17FactoryDiscovery::findUriFactory(),
+                streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
+                requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
+                transporter: Psr18ClientDiscovery::find(),
+            ),
+            $requestOptions,
         );
 
         parent::__construct(
-            // x-release-please-start-version
             headers: [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
@@ -63,9 +75,8 @@ class Client extends BaseClient
                 'X-Stainless-Runtime' => 'php',
                 'X-Stainless-Runtime-Version' => phpversion(),
             ],
-            // x-release-please-end
             baseUrl: $baseUrl,
-            options: $options,
+            options: $options
         );
 
         $this->health = new HealthService($this);
@@ -78,5 +89,33 @@ class Client extends BaseClient
     protected function authHeaders(): array
     {
         return $this->apiKey ? ['Authorization' => "Bearer {$this->apiKey}"] : [];
+    }
+
+    /**
+     * @internal
+     *
+     * @param string|list<string> $path
+     * @param array<string,mixed> $query
+     * @param array<string,string|int|list<string|int>|null> $headers
+     * @param RequestOpts|null $opts
+     *
+     * @return array{NormalizedRequest, RequestOptions}
+     */
+    protected function buildRequest(
+        string $method,
+        string|array $path,
+        array $query,
+        array $headers,
+        mixed $body,
+        RequestOptions|array|null $opts,
+    ): array {
+        return parent::buildRequest(
+            method: $method,
+            path: $path,
+            query: $query,
+            headers: [...$this->authHeaders(), ...$headers],
+            body: $body,
+            opts: $opts,
+        );
     }
 }

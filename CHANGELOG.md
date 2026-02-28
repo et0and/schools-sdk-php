@@ -1,5 +1,57 @@
 # Changelog
 
+## 0.5.0 (2026-02-27)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/et0and/schools-sdk-php/compare/v0.4.0...v0.5.0)
+
+### ⚠ BREAKING CHANGES
+
+* replace special flag type `omittable` with just `null`
+* use aliases for phpstan types
+
+### Features
+
+* add idempotency header support ([6e6fe21](https://github.com/et0and/schools-sdk-php/commit/6e6fe21a7901504d207cde01dd11deef48b52284))
+* improved phpstan type annotations ([79f311f](https://github.com/et0and/schools-sdk-php/commit/79f311f7849df26b62c01f320b72fb81e6a89432))
+* replace special flag type `omittable` with just `null` ([7cd1715](https://github.com/et0and/schools-sdk-php/commit/7cd171536f9bf517436e269aab1fcc69d0183439))
+* simplify and make the phpstan types more consistent ([7420051](https://github.com/et0and/schools-sdk-php/commit/7420051d3bd4675c45b6da79cf604a1d49676146))
+* use `$_ENV` aware getenv helper ([347ead3](https://github.com/et0and/schools-sdk-php/commit/347ead39b2a2c9a840ed68f8c40d5289a3b9937b))
+* use aliases for phpstan types ([b1a2fcf](https://github.com/et0and/schools-sdk-php/commit/b1a2fcf4dc2bd8736ab993d6e3bffbf48cb865e7))
+
+
+### Bug Fixes
+
+* support arrays in query param construction ([ecfbc27](https://github.com/et0and/schools-sdk-php/commit/ecfbc2701f5c03b570c8969a894a398ded439266))
+* typos in README.md ([1193154](https://github.com/et0and/schools-sdk-php/commit/119315478a5825e826f93cda40e421dfe21fa4ef))
+* used redirect count instead of retry count in base client ([8e556b8](https://github.com/et0and/schools-sdk-php/commit/8e556b8e5ea930f51ca6efe06737545f5e3eafe1))
+
+
+### Chores
+
+* add git attributes and composer lock file ([319fc1c](https://github.com/et0and/schools-sdk-php/commit/319fc1cddce38b79bb2021b81899978a8f979eb6))
+* **internal:** add a basic client test ([6cab5bb](https://github.com/et0and/schools-sdk-php/commit/6cab5bbfd1a5e50a8dd3998d3e0878cda682d5c6))
+* **internal:** codegen related update ([861a0d0](https://github.com/et0and/schools-sdk-php/commit/861a0d0aeba18bac381ad44428209686875bc53a))
+* **internal:** codegen related update ([e168407](https://github.com/et0and/schools-sdk-php/commit/e1684071a46f307f35490af39ca3fbf113b9bf09))
+* **internal:** codegen related update ([fbab668](https://github.com/et0and/schools-sdk-php/commit/fbab668c055abac94a1bc937455742e9060bcb86))
+* **internal:** codegen related update ([2618aae](https://github.com/et0and/schools-sdk-php/commit/2618aae2d9d7a80931962ffab9502c3c8ab6bcd2))
+* **internal:** codegen related update ([5edbfe5](https://github.com/et0and/schools-sdk-php/commit/5edbfe5c5ba753066b4b0632609cf9fcc3fb0c61))
+* **internal:** codegen related update ([2f03e94](https://github.com/et0and/schools-sdk-php/commit/2f03e94660154d580fe4fd49236f1a440e046244))
+* **internal:** codegen related update ([38c6aa6](https://github.com/et0and/schools-sdk-php/commit/38c6aa6f74280a15aa709cf0266d0afb51c1e30d))
+* **internal:** codegen related update ([956ca38](https://github.com/et0and/schools-sdk-php/commit/956ca3894bb38d7acfe9a272a074b59ff370012a))
+* **internal:** codegen related update ([c3b29d4](https://github.com/et0and/schools-sdk-php/commit/c3b29d431eda502ca8429cd9632e6621ce554c87))
+* **internal:** codegen related update ([5a52c12](https://github.com/et0and/schools-sdk-php/commit/5a52c1274c0b05bdb770f31876d464b76ffdf2a4))
+* **internal:** codegen related update ([40b1393](https://github.com/et0and/schools-sdk-php/commit/40b139362bf9eeb416c5c053a423e7bb4d5d4489))
+* **internal:** ignore stainless-internal artifacts ([7462f8b](https://github.com/et0and/schools-sdk-php/commit/7462f8b650bf9269d8a947256ae668550e931775))
+* **internal:** minor test script reformatting ([b913855](https://github.com/et0and/schools-sdk-php/commit/b9138556ee90c052096764b0d8d83c317658760e))
+* **internal:** php cs fixer should not be memory limited ([d5fd361](https://github.com/et0and/schools-sdk-php/commit/d5fd361de94955e80b7631c21eb1fd614517deec))
+* **internal:** refactor auth by moving concern from base client into client ([7c23328](https://github.com/et0and/schools-sdk-php/commit/7c23328a86c8aca4b0bfb898ea9261200238c2b3))
+* **internal:** remove mock server code ([e055928](https://github.com/et0and/schools-sdk-php/commit/e0559284305011bd09073b9eb7c6cb93b1ee8b03))
+* **internal:** update `actions/checkout` version ([d33fa4b](https://github.com/et0and/schools-sdk-php/commit/d33fa4bfd657ab03c92e2ae05a05dd46c6aa8778))
+* **internal:** update phpstan comments ([38244ad](https://github.com/et0and/schools-sdk-php/commit/38244ad37716f92a3b9326da4898cbdacc0282b8))
+* **internal:** upgrade phpunit ([671d957](https://github.com/et0and/schools-sdk-php/commit/671d9572ac3fb3310665d89c252884b83ddc8f53))
+* **readme:** remove beta warning now that we're in ga ([8d619ba](https://github.com/et0and/schools-sdk-php/commit/8d619bad78a34478d9ec0a51bd5f549f0c3454cb))
+* update mock server docs ([59d4722](https://github.com/et0and/schools-sdk-php/commit/59d47224647816beec72c93d449ca7471f66c009))
+
 ## 0.4.0 (2025-12-26)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/et0and/schools-sdk-php/compare/v0.3.0...v0.4.0)

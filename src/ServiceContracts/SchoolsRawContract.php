@@ -17,12 +17,16 @@ use Schools\Schools\SchoolListResponse;
 use Schools\Schools\SchoolSearchParams;
 use Schools\Schools\SchoolSearchResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 interface SchoolsRawContract
 {
     /**
      * @api
      *
      * @param string $schoolID School ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchoolGetResponse>
      *
@@ -30,13 +34,14 @@ interface SchoolsRawContract
      */
     public function retrieve(
         string $schoolID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|SchoolListParams $params
+     * @param array<string,mixed>|SchoolListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchoolListResponse>
      *
@@ -44,14 +49,15 @@ interface SchoolsRawContract
      */
     public function list(
         array|SchoolListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $authority Education authority
-     * @param array<mixed>|SchoolByAuthorityParams $params
+     * @param array<string,mixed>|SchoolByAuthorityParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -60,14 +66,15 @@ interface SchoolsRawContract
     public function byAuthority(
         string $authority,
         array|SchoolByAuthorityParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $city City name
-     * @param array<mixed>|SchoolByCityParams $params
+     * @param array<string,mixed>|SchoolByCityParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -76,14 +83,15 @@ interface SchoolsRawContract
     public function byCity(
         string $city,
         array|SchoolByCityParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $status School status
-     * @param array<mixed>|SchoolByStatusParams $params
+     * @param array<string,mixed>|SchoolByStatusParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -92,14 +100,15 @@ interface SchoolsRawContract
     public function byStatus(
         string $status,
         array|SchoolByStatusParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $suburb Suburb name
-     * @param array<mixed>|SchoolBySuburbParams $params
+     * @param array<string,mixed>|SchoolBySuburbParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -108,13 +117,14 @@ interface SchoolsRawContract
     public function bySuburb(
         string $suburb,
         array|SchoolBySuburbParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|SchoolSearchParams $params
+     * @param array<string,mixed>|SchoolSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchoolSearchResponse>
      *
@@ -122,6 +132,6 @@ interface SchoolsRawContract
      */
     public function search(
         array|SchoolSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

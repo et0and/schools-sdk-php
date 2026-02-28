@@ -10,6 +10,9 @@ use Schools\Health\HealthCheckResponse;
 use Schools\RequestOptions;
 use Schools\ServiceContracts\HealthContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 final class HealthService implements HealthContract
 {
     /**
@@ -30,10 +33,12 @@ final class HealthService implements HealthContract
      *
      * API health check
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function check(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): HealthCheckResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->check(requestOptions: $requestOptions);

@@ -12,6 +12,9 @@ use Schools\ServiceContracts\SyncRawContract;
 use Schools\Sync\SyncGetStatusResponse;
 use Schools\Sync\SyncTriggerResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \Schools\RequestOptions
+ */
 final class SyncRawService implements SyncRawContract
 {
     // @phpstan-ignore-next-line
@@ -25,12 +28,14 @@ final class SyncRawService implements SyncRawContract
      *
      * Get sync status
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<SyncGetStatusResponse>
      *
      * @throws APIException
      */
     public function getStatus(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -46,12 +51,14 @@ final class SyncRawService implements SyncRawContract
      *
      * Trigger manual data sync
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<SyncTriggerResponse>
      *
      * @throws APIException
      */
     public function trigger(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

@@ -15,14 +15,14 @@ use Schools\Core\Contracts\BaseModel;
  * @see Schools\Services\SchoolsService::list()
  *
  * @phpstan-type SchoolListParamsShape = array{
- *   authority?: string,
- *   city?: string,
- *   limit?: int,
- *   name?: string,
- *   orgType?: string,
- *   page?: int,
- *   status?: string,
- *   suburb?: string,
+ *   authority?: string|null,
+ *   city?: string|null,
+ *   limit?: int|null,
+ *   name?: string|null,
+ *   orgType?: string|null,
+ *   page?: int|null,
+ *   status?: string|null,
+ *   suburb?: string|null,
  * }
  */
 final class SchoolListParams implements BaseModel

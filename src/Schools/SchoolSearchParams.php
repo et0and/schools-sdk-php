@@ -16,7 +16,7 @@ use Schools\Core\Contracts\BaseModel;
  * @see Schools\Services\SchoolsService::search()
  *
  * @phpstan-type SchoolSearchParamsShape = array{
- *   q: string, limit?: int, page?: int
+ *   q: string, limit?: int|null, page?: int|null
  * }
  */
 final class SchoolSearchParams implements BaseModel
