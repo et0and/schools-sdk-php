@@ -14,6 +14,8 @@ use Schools\Schools\SchoolSearchResponse;
 use Schools\ServiceContracts\SchoolsContract;
 
 /**
+ * School data retrieval operations.
+ *
  * @phpstan-import-type RequestOpts from \Schools\RequestOptions
  */
 final class SchoolsService implements SchoolsContract
