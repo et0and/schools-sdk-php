@@ -12,6 +12,8 @@ use Schools\Root\RootGetResponse;
 use Schools\ServiceContracts\RootRawContract;
 
 /**
+ * API health and status.
+ *
  * @phpstan-import-type RequestOpts from \Schools\RequestOptions
  */
 final class RootRawService implements RootRawContract

@@ -13,6 +13,8 @@ use Schools\Sync\SyncGetStatusResponse;
 use Schools\Sync\SyncTriggerResponse;
 
 /**
+ * Data sync operations.
+ *
  * @phpstan-import-type RequestOpts from \Schools\RequestOptions
  */
 final class SyncRawService implements SyncRawContract
