@@ -11,6 +11,8 @@ use Schools\RequestOptions;
 use Schools\ServiceContracts\HealthContract;
 
 /**
+ * API health and status.
+ *
  * @phpstan-import-type RequestOpts from \Schools\RequestOptions
  */
 final class HealthService implements HealthContract
