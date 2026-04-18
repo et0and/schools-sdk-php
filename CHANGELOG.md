@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.5.1 (2026-04-18)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/et0and/schools-sdk-php/compare/v0.5.0...v0.5.1)
+
+### Bug Fixes
+
+* **client:** properly generate file params ([7d325ac](https://github.com/et0and/schools-sdk-php/commit/7d325ac6bd5fdd639a6d58877249ee4bd7d826f8))
+* **client:** resolve serialization issue with unions and enums ([54b747b](https://github.com/et0and/schools-sdk-php/commit/54b747b8e2bda0dcdc4f6b1e5b4b01ac3628dda3))
+* populate enum-typed properties with enum instances ([0afa596](https://github.com/et0and/schools-sdk-php/commit/0afa596d50db0a884f698d030163737618e0fe1a))
+
+
+### Chores
+
+* **internal:** codegen related update ([d51e0f9](https://github.com/et0and/schools-sdk-php/commit/d51e0f9799e82bc1ed06bc49b24e134324ff6ffc))
+* **internal:** tweak CI branches ([41c1d61](https://github.com/et0and/schools-sdk-php/commit/41c1d61ba051bbe4b27a04b0bb99f5c8271adfce))
+
 ## 0.5.0 (2026-02-27)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/et0and/schools-sdk-php/compare/v0.4.0...v0.5.0)
