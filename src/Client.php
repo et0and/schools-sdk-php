@@ -7,6 +7,7 @@ namespace Schools;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Schools\Core\BaseClient;
+use Schools\Core\Implementation\StreamingHttpClient;
 use Schools\Core\Util;
 use Schools\Services\HealthService;
 use Schools\Services\RootService;
@@ -62,6 +63,11 @@ class Client extends BaseClient
             ),
             $requestOptions,
         );
+
+        if (is_null($options->streamingTransporter)) {
+            assert(!is_null($options->transporter));
+            $options->streamingTransporter = new StreamingHttpClient($options->transporter);
+        }
 
         /** @var array<string, string|null> $headers */
         $headers = [
